@@ -45,7 +45,7 @@ async def info(Client, message):
                 text = """<b>Register First Hit /takeme to register me</b>"""
                 await msg.edit_text(text)
             else:
-                if  "Hee"#isinstance(int(antidb.get(message.from_user.id)), type(None)) == True:
+                if  "Hee" == True:#isinstance(int(antidb.get(message.from_user.id)), type(None)) == True:
                     text = """<b>Register First Hit /takeme </b>"""
                     await msg.edit_text(text)
                 else:
