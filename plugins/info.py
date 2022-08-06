@@ -31,7 +31,7 @@ from pyrogram.errors import BadRequest, Forbidden
 @Client.on_message(filters.command('info',prefixes=['.','/','!'],case_sensitive=False))
 @Client.on_message(filters.command('myacc',prefixes=['.','/','!'],case_sensitive=False))
 async def info(Client, message):
-    try:
+    #try:
         verified_gps = open('files/groups.txt', 'r').readlines()
         if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
             await message.reply_text(text= group_not_allowed,reply_to_message_id=message.message_id)
@@ -76,9 +76,9 @@ async def info(Client, message):
                     await msg.edit_text(text,disable_web_page_preview=True)
 # <b>○</b> Message Type: <b>{message.from_user.type}</b>
         # await Client.send_message(chat_id=message.chat.id,text=text,reply_to_message_id=message.message_id,reply_markup=buttons)
-    except Exception as e:
-        await Client.send_message(chat_id=loggp,text=e)
-        print(e) 
+    #except Exception as e:
+    #    await Client.send_message(chat_id=loggp,text=e)
+    #    print(e) 
                 # if message.from_user.photo is None:
                 #     userimage = "https://te.legra.ph/file/8692b409921efe361831f.png"
                 # else:
