@@ -49,7 +49,7 @@ async def info(Client, message):
                     text = """<b>Register First Hit /takeme </b>"""
                     await msg.edit_text(text)
                 else:
-                    antispam_time = int(antidb.get(message.from_user.id).decode("utf-8"))
+                    antispam_time = "Hee"#int(antidb.get(message.from_user.id).decode("utf-8"))
                     text = f"""
 <b>〄</b> User Information:-
 <b>○</b> First Name: <b>{message.from_user.first_name}</b>
@@ -65,7 +65,7 @@ async def info(Client, message):
 <b>○</b> Status: <b>{find['status']}</b>
 <b>○</b> Credits: <b>{find['credits']}</b>
 <b>○</b> Live Cards: <b>COMING SOON</b>
-<b>○</b> AntiSpam Time: <b>{datetime.utcfromtimestamp(antispam_time).strftime('%H:%M:%S %d-%m-%Y')}</b>
+<b>○</b> AntiSpam Time: <b>{antispam_time}</b>
 
 <b>〄</b> Chat Information:-
 <b>○</b> Chat Name: <b>{message.chat.title}</b>
