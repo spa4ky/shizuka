@@ -17,15 +17,14 @@ logging.basicConfig(level=logging.INFO)
 
 bot = Client(
     'bot',
-    api_id= API_ID, #get it from https://my.telegram.org/auth
-    api_hash="API_HASH", #get it from https://my.telegram.org/auth
-    bot_token="BOT_TOKEN", #get it from @Botfather
+    api_id= 3176510, #get it from https://my.telegram.org/auth
+    api_hash="df02110f33f1703026c28801e5fa0731", #get it from https://my.telegram.org/auth
+    bot_token="5192319960:AAH95pCZBQFx7iOBr3WzlRDgCAWOvWleby0", #get it from @Botfather
     plugins=dict(root="plugins"),
     parse_mode="html")
 
 
-try:
-    bot.run()
-except Exception as e:
-    print(e)
+
+bot.run()
+
         
