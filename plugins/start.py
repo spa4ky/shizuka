@@ -39,6 +39,8 @@ How Are You?
 I Am Jocasta. The Multi Functional Bot For You.
 Today Is {day} Of {dt_string}.
 Check And Click Down For More</b>    
+
+Bot By @MrItzMe
 """
     await Client.send_message(chat_id=message.chat.id,text=caption,disable_web_page_preview=True,reply_to_message_id=message.message_id,reply_markup=REPLY_MARKUP)
     # try: 
