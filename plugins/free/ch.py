@@ -97,7 +97,7 @@ async def ch(Client, message):
                         else: 
                             lista = cc + "|" + mes + "|" + ano + "|" + cvv
                             bin = cc[:6]
-                            res = requests.get("https://adyen-enc-and-bin-info.herokuapp.com/bin/" + bin)
+                            res = requests.get("https://bin-check-dr4g.herokuapp.com/api/" + bin)
                             if res.status_code != requests.codes.ok or json.loads(res.text)['result'] == False:
                                 await msg.edit_text("Your Card Is Invalid.")
                             elif str(bin) + "\n"in banned_bins:
