@@ -12,7 +12,7 @@ import json
 async def bin(Client, message):
     try:
         started_time = time.time()
-        if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
+        if (message.chat.type != "private"):
             await message.reply_text(text= group_not_allowed,reply_to_message_id=message.message_id)
         else:
             msg = await message.reply_text(text="<b>Wait Collecting Information</b>",reply_to_message_id=message.message_id)
