@@ -46,8 +46,8 @@ async def ch(Client, message):
             elif find['status'] == "F" and message.chat.type == 'private':
                 await msg.edit_text(buy_premium)
             else:
-                antispam_time = int(antidb.get(message.from_user.id).decode("utf-8"))
-                spam_time = int(time.time()) - antispam_time
+                antispam_time = 10#int(antidb.get(message.from_user.id).decode("utf-8"))
+                spam_time = 10#int(time.time()) - antispam_time
                 role = find["status"]
                 if role == "P" and spam_time < 10:
                     time_left = 10 - spam_time
@@ -248,7 +248,7 @@ async def ch(Client, message):
 <b>○</b> TIME TAKEN: {get_time_taken(started_time)}'s
 <b>○</b> BOT BY: <b>@RoldexVerse</b>"""
                                         await msg.edit_text(lasttext)
-                                        antidb.set(message.from_user.id, int(time.time()))
+                                        #antidb.set(message.from_user.id, int(time.time()))
     
     except Exception as e:
         await Client.send_message(chat_id=loggp, text=e)
