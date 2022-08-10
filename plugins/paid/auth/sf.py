@@ -42,8 +42,8 @@ async def sf(Client, message):
                         "status": "F",
                         "credits": 0}}, upsert=False)
             else:
-                antispam_time = 10#int(antidb.get(message.from_user.id).decode("utf-8"))
-                spam_time = 10#int(time.time()) - antispam_time
+                antispam_time = 0#int(antidb.get(message.from_user.id).decode("utf-8"))
+                spam_time = 0#int(time.time()) - antispam_time
                 role = find["status"]
                 if role == "P" and spam_time < 20:
                     time_left = 20 - spam_time
