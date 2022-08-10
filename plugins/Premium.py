@@ -10,7 +10,7 @@ import json
 
 @Client.on_message(filters.command(["premium"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 async def sf(Client, message):
-  credits = message.text
+  credits = message.text.split(None, 1)[1]
   if message.from_user.id == 5111959652:
     maindb.update_one({'_id': message.from_user.id},{
       '$set': {
@@ -19,6 +19,6 @@ async def sf(Client, message):
         "status": "P",
         "credits": credits
       }}, upsert=False)
-    await message.reply_text("Success")
+    await message.reply_text("<b>Success</b>")
   else:
     return await message.reply("Heh nigga")
