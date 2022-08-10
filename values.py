@@ -56,7 +56,7 @@ banned_bins = open('files/bannedbin.txt', 'r').readlines()
 admins = open('files/admins.txt', 'r').readlines()
 verified_gps = open('files/groups.txt', 'r').readlines()
 
-group_not_allowed = """<b>This Group Is Not Verified. Talk With <code>@r0ld3x</code> And Take Verification.</b>"""
+group_not_allowed = """<b>This Group Is Not Verified. Talk With <code>@MrItzMe</code> And Take Verification.</b>"""
 use_not_registered = """<b>Register Yourself To Use Me. Hit /register To Register Yourself</b>"""
 buy_premium = """<b>Take Paid Plan To Use Me In Private Mode. Hit /buy To See My Premium Plans</b>"""
 free_user = """<b>buy paid plan to use this gate hit /buy to see my premium plans</b>"""
@@ -215,7 +215,7 @@ def main(cc,mes,ano,cvv):
     # "http": "http://copunwcs-rotate:zpxyewfj84cp@p.webshare.io:80/",
     # "https": "http://copunwcs-rotate:zpxyewfj84cp@p.webshare.io:80/",
     # }
-    res = requests.get("https://adyen-enc-and-bin-info.herokuapp.com/bin/" + cc)
+    res = requests.get("https://bin-check-dr4g.herokuapp.com/api/" + cc)
     bin_data = json.loads(res.text)
     res = requests.get("https://randomuser.me/api/?nat=us&inc=name,location")
     random_data = json.loads(res.text)
