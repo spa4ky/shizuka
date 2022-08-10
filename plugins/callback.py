@@ -247,8 +247,8 @@ async def extra(Client, message , update):
 async def buy(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('🛒 BUY 🛒', url='https://t.me/r0ld3x'),
-        InlineKeyboardButton('ℹ CHANNEL ℹ', url='https://t.me/roldexverse')
+        InlineKeyboardButton('🛒 BUY 🛒', url='https://t.me/MrItzMe'),
+        InlineKeyboardButton('ℹ CHANNEL ℹ', url='https://t.me/SDBots')
     ],
     [
         InlineKeyboardButton('↩️ RETURN ↩️', callback_data='gates'),
@@ -276,8 +276,8 @@ async def buy(Client, message , update):
 async def gen(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('🛒 BUY 🛒', url='https://t.me/r0ld3x'),
-        InlineKeyboardButton('ℹ CHANNEL ℹ', url='https://t.me/roldexverse')
+        InlineKeyboardButton('🛒 BUY 🛒', url='https://t.me/MrItzMe'),
+        InlineKeyboardButton('ℹ CHANNEL ℹ', url='https://t.me/SDBOTs_inifinity')
     ],
     [
         InlineKeyboardButton('↩️ RETURN ↩️', callback_data='gates'),
@@ -319,7 +319,7 @@ async def gen(Client, message , update):
           await Client.edit_message_text(chat_id=message.chat.id,text=text,reply_markup=reply_markup,message_id=message.message_id)
       else:
         bin = cc[:6]
-        res = requests.get("https://adyen-enc-and-bin-info.herokuapp.com/bin/" + bin)
+        res = requests.get("https://bin-check-dr4g.herokuapp.com/api/" + bin)
         if res.status_code != requests.codes.ok or json.loads(res.text)['result'] == False:
             text = "Your Bin Is Invalid."
             await Client.edit_message_text(chat_id=message.chat.id,text=text,reply_markup=reply_markup,message_id=message.message_id)
