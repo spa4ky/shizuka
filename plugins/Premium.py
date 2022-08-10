@@ -17,7 +17,7 @@ async def sf(Client, message):
         "plan": "PAID PLAN",
         "role": "PAID USER",
         "status": "P",
-        "credits": int(credits)
+        "credits": credits
       }}, upsert=False)
     await message.reply_text("Success")
   else:
