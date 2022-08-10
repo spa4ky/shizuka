@@ -8,7 +8,6 @@ from pyrogram import (
 from values import *
 
 import json
-
 @Client.on_message(filters.command('bin',prefixes=['.','/','!'],case_sensitive=False) & filters.text)
 async def bin(Client, message):
     try:
@@ -17,7 +16,6 @@ async def bin(Client, message):
             await message.reply_text(text= group_not_allowed,reply_to_message_id=message.message_id)
         else:
             msg = await message.reply_text(text="<b>Wait Collecting Information</b>",reply_to_message_id=message.message_id)
-            #await Client.send_chat_action(message.chat.id, "typing")
             if message.reply_to_message is not None:
                 message.text = message.reply_to_message.text
             find = maindb.find_one({
@@ -35,19 +33,21 @@ async def bin(Client, message):
                     if len(bin) < 6:
                         await msg.edit_text("Bin Is To Short")
                     elif int(bin[0]) in waste_cards:
-                        await msg.edit_text("Invalid Bin")
+                        await msg.edit_text("Invalid bin")
                     else:
-                        req = requests.get("https://adyen-enc-and-bin-info.herokuapp.com/bin/" + bin)
-                        if req.status_code == requests.codes.ok:
+                        req = requests.get("https://bin-check-dr4g.herokuapp.com/api/" + bin)
+                        if req.status_code == requests.codes.ok and 'result":true' in req.text:
                             jsontext =  json.loads(req.text)
                             text = f"""
 <b>〄</b> Bin Information:-
-<b>○</b> Bin: <code>{jsontext['bin']}</code>✅
-<b>○</b> Vendor: <b>{jsontext['vendor']}</b>
-<b>○</b> Type: <b>{jsontext['type']}</b>
-<b>○</b> Level: <b>{jsontext['level']}</b>
-<b>○</b> Bank: <b>{jsontext['bank']}</b>
-<b>○</b> Country: <b>{jsontext['country']}</b>
+<b>○</b> Bin: <code>{jsontext['data']['bin']}</code>✅
+<b>○</b> Vendor: <b>{jsontext['data']['vendor']}</b>
+<b>○</b> Type: <b>{jsontext['data']['type']}</b>
+<b>○</b> Level: <b>{jsontext['data']['level']}</b>
+<b>○</b> Bank: <b>{jsontext['data']['bank']}</b>
+<b>○</b> Country: <b>{jsontext['data']['country']}({jsontext['data']['countryInfo']['emoji']})</b>
+<b>○</b> Dial Code: <b>{jsontext['data']['countryInfo']['dialCode']}</b>
+
 <b>○</b> Checked By: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[{find['role']}]</b>
 <b>○</b> BOT BY: <b>@MrItzMe</b>"""
                             await msg.edit_text(text, disable_web_page_preview=True)
