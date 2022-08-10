@@ -12,6 +12,8 @@ import json
 async def bin(Client, message):
     try:
         started_time = time.time()
+        if "hehe" == "hds":
+            pass
         #if (message.chat.type != "private"):
         #    await message.reply_text(text= group_not_allowed,reply_to_message_id=message.message_id)
         else:
