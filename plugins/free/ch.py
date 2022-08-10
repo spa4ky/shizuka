@@ -29,7 +29,7 @@ async def ch(Client, message):
         started_time = time.time()
         banned_bins = open('files/bannedbin.txt', 'r').readlines()
         verified_gps = open('files/groups.txt', 'r').readlines()
-        if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
+        if (message.chat.type != "private"):
             print(verified_gps)
             await message.reply_text(text= group_not_allowed,reply_to_message_id=message.message_id)
         else:
