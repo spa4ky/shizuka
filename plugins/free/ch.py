@@ -7,6 +7,7 @@ import re
 from values import *
 from pyrogram import Client, filters
 import json
+import asyncio
 
 headers = {
     'authority':'www.voclr.it',
@@ -158,6 +159,7 @@ async def ch(Client, message):
                                     await msg.edit_text(text)
                                     data = f"level=1&checkjavascript=1&other_discount_code=&username={get_username()}&password={password}&password2={password}&bemail={email}&bconfirmemail={email}&fullname=&gateway=stripe&CardType={vendor}&discount_code=&submit-checkout=1&javascriptok=1&submit-checkout=1&javascriptok=1&payment_method_id={id}&AccountNumber={cc}&ExpirationMonth={mes}&ExpirationYear={ano}"
                                     res = curl.post("https://www.voclr.it/membership-account/membership-checkout/",headers=headers,data=data)
+                                    await asyncio.sleep(5)
                                     text = f"""
 <b>〄</b> GATE: <b>STRIPE FREE [2]</b>
 <b>○</b> INPUT: <code>{lista}</code>
@@ -166,7 +168,9 @@ async def ch(Client, message):
 <b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
 <b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>○</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+
+<b>○</b> BOT BY: <b>@MrItzMe</b>"""
+                                    await asyncio.sleep(5)
                                     await msg.edit_text(text)
                                     try:
                                         if 'incorrect_zip' in res.text or 'Your card zip code is incorrect.' in res.text or 'The zip code you supplied failed validation' in res.text or 'card zip code is incorrect' in res.text: 
@@ -246,7 +250,9 @@ async def ch(Client, message):
 <b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
 <b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>○</b> TIME TAKEN: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
+                                        await asyncio.sleep(5)
                                         await msg.edit_text(lasttext)
                                         #antidb.set(message.from_user.id, int(time.time()))
     
