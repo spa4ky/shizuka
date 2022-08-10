@@ -11,7 +11,7 @@ import json
 @Client.on_message(filters.command(["premium"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 async def sf(Client, message):
   credits = message.text.split(None, 1)[1]
-  if message.from_user.id == 5111959652:
+  if message.from_user.id == 1391755824:
     maindb.update_one({'_id': message.from_user.id},{
       '$set': {
         "plan": "PAID PLAN",
