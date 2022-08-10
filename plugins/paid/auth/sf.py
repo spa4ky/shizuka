@@ -22,9 +22,10 @@ async def sf(Client, message):
             text = f"""
 <b>〄</b> GATE: <b>STRIPE AUTH [3]</b>
 <b>○</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
 <b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+
+<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>🧑🏻‍💻| BOT BY @MrItzMe</b>"""
             msg = await message.reply_text(text=text,reply_to_message_id=message.message_id)
             await Client.send_chat_action(message.chat.id, "typing")
             find = maindb.find_one({"_id": message.from_user.id})
@@ -32,7 +33,7 @@ async def sf(Client, message):
                 await msg.edit_text(use_not_registered)
             elif find['status'] == "F":
                 await msg.edit_text(free_user)
-            elif find['status'] == "P" and find['credits'] < 2:
+            elif find['status'] == "P" and int(find['credits']) < 2:
                 await msg.edit_text("""<b>You comsumed all your credits. hit /buy to buy more credits. And now are demoted to a free user</b>""")
                 maindb.update_one({'_id': message.from_user.id},{
                     '$set': {
@@ -41,8 +42,8 @@ async def sf(Client, message):
                         "status": "F",
                         "credits": 0}}, upsert=False)
             else:
-                antispam_time = int(antidb.get(message.from_user.id).decode("utf-8"))
-                spam_time = int(time.time()) - antispam_time
+                antispam_time = 10#int(antidb.get(message.from_user.id).decode("utf-8"))
+                spam_time = 10#int(time.time()) - antispam_time
                 role = find["status"]
                 if role == "P" and spam_time < 20:
                     time_left = 20 - spam_time
@@ -89,7 +90,7 @@ async def sf(Client, message):
                         else: 
                             lista = cc + "|" + mes + "|" + ano + "|" + cvv
                             bin = cc[:6]
-                            res = requests.get("https://adyen-enc-and-bin-info.herokuapp.com/bin/" + bin)
+                            res = requests.get("https://bin-check-dr4g.herokuapp.com/api/" + bin)
                             if res.status_code != requests.codes.ok or json.loads(res.text)['result'] == False:
                                 await msg.edit_text("Your Card Is Invalid.")
                             elif str(bin) + "\n"in banned_bins:
@@ -119,9 +120,10 @@ async def sf(Client, message):
 <b>○</b> RESULT: <b>REJECTED❌ [INCORRECT CARD]</b>
 <b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
 <b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+
+<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 elif 'id' not in json_first:
@@ -131,9 +133,10 @@ async def sf(Client, message):
 <b>○</b> RESULT: <b>REJECTED❌ [ERROR]</b>
 <b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
 <b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+
+<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 else:
@@ -144,9 +147,10 @@ async def sf(Client, message):
 <b>○</b> PROCESS: <b>■■■■■□□□□□ 50%</b>
 <b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
 <b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
 
                                     await msg.edit_text(text)
                                     headers = {
@@ -167,9 +171,10 @@ async def sf(Client, message):
 <b>○</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
 <b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
 <b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>○</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     try:
                                         if 'incorrect_zip' in res.text or 'Your card zip code is incorrect.' in res.text or 'The zip code you supplied failed validation' in res.text or 'card zip code is incorrect' in res.text: 
@@ -250,10 +255,11 @@ async def sf(Client, message):
 <b>○</b> RESULT: <b>{response}{r_logo} [{r_text}]</b>
 <b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
 <b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>○</b> CREDIT LEFT: {credits_left}
 <b>○</b> TIME TAKEN: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+
+<b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                             await msg.edit_text(lasttext)
                                             antidb.set(message.from_user.id, int(time.time()))
     
