@@ -12,8 +12,8 @@ import json
 async def bin(Client, message):
     try:
         started_time = time.time()
-        if (message.chat.type != "private"):
-            await message.reply_text(text= group_not_allowed,reply_to_message_id=message.message_id)
+        #if (message.chat.type != "private"):
+        #    await message.reply_text(text= group_not_allowed,reply_to_message_id=message.message_id)
         else:
             msg = await message.reply_text(text="<b>Wait Collecting Information</b>",reply_to_message_id=message.message_id)
             if message.reply_to_message is not None:
