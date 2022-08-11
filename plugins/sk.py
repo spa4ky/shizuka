@@ -18,7 +18,7 @@ async def sk(Client, message):
     response = req['response']
     sk_key = req['sk_key']
     if response == "✅ Live Key!":
-      text f"""
+      text = f"""
       <b>✅ LIVE KEY</b>      
       
       <b>KEY:</b> <code>{sk_key}</code>
@@ -26,7 +26,7 @@ async def sk(Client, message):
       <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
       msg = await message.reply_text(text=text,reply_to_message_id=message.message_id) 
     else:
-      text f"""
+      text = f"""
       <b>❌ DEAD KEY</b>      
       
       <b>KEY:</b> <code>{sk_key}</code>
