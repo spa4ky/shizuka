@@ -5,17 +5,17 @@ import requests
 from requests.exceptions import ProxyError
 import re
 import bs4
-from defs import *
+from values import *
 from pyrogram import Client, filters
 import json
 import uuid
 
-@Client.on_message(filters.command(["bb"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
+@Client.on_message(filters.command(["bblk"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 
 async def sa(Client, message):
     try:
         started_time = time.time()
-        verified_gps = open("groups.txt", "r")
+        verified_gps = open("files/groups.txt", "r")
         verified_gps = verified_gps.readlines()
         if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
             await message.reply_text(text="""<b>This Group Is Not Verified. Talk With <code>@r0ld3x</code> And Ask For Verification.</b>""",reply_to_message_id=message.message_id)
@@ -46,13 +46,13 @@ async def sa(Client, message):
                         }
                     }, upsert=False)
             else:
-                r = redis.Redis(
-                    host="redis-18001.c82.us-east-1-2.ec2.cloud.redislabs.com",
-                    port=18001,
-                    password="eO00qpZScxQ6u1UsZ32Y94YuZ1J7pGWR",
-                )
-                antispam_time = int(r.get(message.from_user.id).decode("utf-8"))
-                spam_time = int(time.time()) - antispam_time
+                r = antidb#= redis.Redis(
+                  #  host="redis-18001.c82.us-east-1-2.ec2.cloud.redislabs.com",
+                  #  port=18001,
+                  #  password="eO00qpZScxQ6u1UsZ32Y94YuZ1J7pGWR",
+                #)
+                antispam_time = 20#int(r.get(message.from_user.id).decode("utf-8"))
+                spam_time = 20#int(time.time()) - antispam_time
                 role = find["status"]
                 if role == "P" and spam_time < 20:
                     time_left = 20 - spam_time
@@ -118,10 +118,10 @@ async def sa(Client, message):
                             mes = "12"
                             ano = "2023"
                             cvv = "374"
-                            res = requests.get("https://jocastabins.herokuapp.com/api/" + bin)
+                            res = requests.get("https://bin-check-dr4g.herokuapp.com/api/" + bin)
                             if res.status_code != requests.codes.ok or json.loads(res.text)['result'] == False:
                                 await msg.edit_text("Your Card's Bin Is Invalid")   
-                            elif(str(message.chat.id) + "\n"in open("bannedbin.txt", "r").readlines()):
+                            elif(str(message.chat.id) + "\n"in open("files/bannedbin.txt", "r").readlines()):
                                 await msg.edit_text("Your Card's Bin Is Banned")
                             else:
                                 bin_data = json.loads(res.text)
@@ -257,6 +257,7 @@ async def sa(Client, message):
 <b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [{find['role']}]</b>
 <b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
 <b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+                                    await Client.send_message(chat_id=loggp, text=res.text)
                                     await msg.edit_text(text)
                                     r.set(message.from_user.id, int(time.time()))
                                 else:
