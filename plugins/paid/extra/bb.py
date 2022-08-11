@@ -103,8 +103,8 @@ async def sa(Client, message):
                             bin = cc[:6]
                             req = requests.Session()
                             req.proxies = {
-                                "http": "http://tnfpjnnj-rotate:9krjtv3qgzmo@p.webshare.io:80/",
-                                "https": "http://tnfpjnnj-rotate:9krjtv3qgzmo@p.webshare.io:80/",
+                                "http": "http://lkojohou-rotate:ogfop4m38gyq@p.webshare.io:80/",
+                                "https": "http://lkojohou-rotate:ogfop4m38gyq@p.webshare.io:80/"
                             }
                             if len(ano) == 2:
                                 ano = "20" + str(ano)
