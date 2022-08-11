@@ -19,21 +19,20 @@ async def sk(Client, message):
     sk_key = req['sk_key']
     if response == "✅ Live Key!":
       text f"""
-<b>✅ LIVE KEY</b>      
-
-<b>KEY:</b> <code>{sk_key}</code>
-
-<b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
+      <b>✅ LIVE KEY</b>      
+      
+      <b>KEY:</b> <code>{sk_key}</code>
+      <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+      <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
       msg = await message.reply_text(text=text,reply_to_message_id=message.message_id) 
     else:
       text f"""
-<b>❌ DEAD KEY</b>      
-
-<b>KEY:</b> <code>{sk_key}</code>
-
-<b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
+      <b>❌ DEAD KEY</b>      
+      
+      <b>KEY:</b> <code>{sk_key}</code>
+      
+      <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+      <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
       msg = await message.reply_text(text=text,reply_to_message_id=message.message_id)       
   except Exception as e:
     await Client.send_message(chat_id=loggp, text=e)      
