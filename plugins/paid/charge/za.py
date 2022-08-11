@@ -40,7 +40,7 @@ async def aa(Client, message):
                 await msg.edit_text(use_not_registered)
             elif find['status'] == "F":
                 await msg.edit_text(free_user)
-            elif find['status'] == "P" and find['credits'] < 2:
+            elif find['status'] == "P" and int(find['credits']) < 2:
                 await msg.edit_text("""<b>You comsumed all your credits. hit /buy to buy more credits. And now are demoted to a free user</b>""")
                 maindb.update_one({'_id': message.from_user.id},{
                     '$set': {
