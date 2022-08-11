@@ -12,7 +12,7 @@ import json
 async def sa(Client, message):
     try:
         started_time = time.time()
-        verified_gps = open("groups.txt", "r")
+        verified_gps = open("files/groups.txt", "r")
         verified_gps = verified_gps.readlines()
         if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
             await message.reply_text(text="""<b>This Group Is Not Verified. Talk With <code>@MrItzMe</code> And Ask For Verification.</b>""",reply_to_message_id=message.message_id)
@@ -107,7 +107,7 @@ async def sa(Client, message):
                             res = requests.get("https://bin-check-dr4g.herokuapp.com/api/" + bin)
                             if res.status_code != requests.codes.ok or json.loads(res.text)['result'] == False:
                                 await msg.edit_text("Your Card's Bin Is Invalid")   
-                            elif(str(message.chat.id) + "\n"in open("bannedbin.txt", "r").readlines()):
+                            elif(str(message.chat.id) + "\n"in open("files/bannedbin.txt", "r").readlines()):
                                 await msg.edit_text("Your Card's Bin Is Banned")
                             else:
                                 bin_data = json.loads(res.text)
