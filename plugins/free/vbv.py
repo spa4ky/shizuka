@@ -5,10 +5,11 @@ from requests.api import request
 from requests.exceptions import ProxyError
 import re
 import bs4
-from defs import *
+from values import *
 from pyrogram import Client, filters
 import json
 import base64
+
 @Client.on_message(filters.command("vbv", prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 async def ci(Client, message):
     try:
@@ -16,15 +17,16 @@ async def ci(Client, message):
         verified_gps = open("groups.txt", "r")
         verified_gps = verified_gps.readlines()
         if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
-            await message.reply_text(text="""<b>This Group Is Not Verified. Talk With <code>@r0ld3x</code> And Ask For Verification.</b>""",reply_to_message_id=message.message_id)
+            await message.reply_text(text="""<b>This Group Is Not Verified. Talk With <code>@MrItzMe</code> And Ask For Verification.</b>""",reply_to_message_id=message.message_id)
         else:
             text = f"""
 <b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
-<b>○</b> RESULT: <b>CHECKING YOUR INPUT</b>
-<b>○</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+<b>ᗚ</b> RESULT: <b>CHECKING YOUR INPUT</b>
+<b>ᗚ</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
+<b>ᗚ</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
             msg = await message.reply_text(text=text,reply_to_message_id=message.message_id)
             await Client.send_chat_action(message.chat.id, "typing")
             client = pymongo.MongoClient(mongourl, serverSelectionTimeoutMS=5000)
@@ -34,13 +36,13 @@ async def ci(Client, message):
             elif find['status'] == "F" and message.chat.type == 'private':
                 await msg.edit_text("""<b>Take Paid Plan To Use ME Here User hit /buy to see my premium plans</b>""")
             else:
-                r = redis.Redis(
-                    host="redis-18001.c82.us-east-1-2.ec2.cloud.redislabs.com",
-                    port=18001,
-                    password="eO00qpZScxQ6u1UsZ32Y94YuZ1J7pGWR",
-                )
-                antispam_time = int(r.get(message.from_user.id).decode("utf-8"))
-                spam_time = int(time.time()) - antispam_time
+                #r = redis.Redis(
+                #    host="redis-18001.c82.us-east-1-2.ec2.cloud.redislabs.com",
+                #    port=18001,
+                #    password="eO00qpZScxQ6u1UsZ32Y94YuZ1J7pGWR",
+                #)
+                antispam_time = 10#int(r.get(message.from_user.id).decode("utf-8"))
+                spam_time = 10#int(time.time()) - antispam_time
                 role = find["status"]
                 if role == "P" and spam_time < 10:
                     time_left = 10 - spam_time
@@ -124,13 +126,14 @@ async def ci(Client, message):
                                 if isinstance(token1, type(None)) == True:
                                     text = f"""
 <b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> RESULT: <b>REJECTED[❌] (ERROR)</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
-<b>○</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [{find['role']}]</b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>REJECTED[❌] (ERROR)</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+<b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     r.set(message.from_user.id, int(time.time()))
                                 else:
@@ -143,14 +146,15 @@ async def ci(Client, message):
                                     merchant_id = re.search(r'"merchant_id": "(.*)", "vault', step1.text).group(1)
                                     text = f"""
 <b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> RESULT: <b>ALMOST COMPLETED</b>
-<b>○</b> PROCESS: ■■■■■□□□□□ 50%
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
-<b>○</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [{find['role']}]</b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>ALMOST COMPLETED</b>
+<b>ᗚ</b> PROCESS: ■■■■■□□□□□ 50%
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+<b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     bearer = f'Bearer {main_bearer}'
                                     headers = {
@@ -196,14 +200,15 @@ async def ci(Client, message):
                                     req = res['enrolled']
                                     text = f"""
     <b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
-    <b>○</b> INPUT: <code>{lista}</code>
-    <b>○</b> RESULT: <b>ALMOST COMPLETED</b>
-    <b>○</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
-    <b>○</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
-    <b>○</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-    <b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [{find['role']}]</b>
-    <b>○</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
-    <b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+    <b>ᗚ</b> INPUT: <code>{lista}</code>
+    <b>ᗚ</b> RESULT: <b>ALMOST COMPLETED</b>
+    <b>ᗚ</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
+    <b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+    <b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+    <b>ᗚ</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
+    
+    <b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+    <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     try:
                                         if req == 'Y':
@@ -222,21 +227,22 @@ async def ci(Client, message):
                                         await Client.send_message(chat_id=loggp, text=e)
                                     else:
                                         if response is None:
-                                            await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER @r0ld3x")
+                                            await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER @MrItzMe")
                                         else:
                                             text = f"""
     <b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
-    <b>○</b> INPUT: <code>{lista}</code>
-    <b>○</b> RESULT: <b>{response}[{r_logo}] ({r_text})</b>
-    <b>○</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
-    <b>○</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-    <b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [{find['role']}]</b>
-    <b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-    <b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+    <b>ᗚ</b> INPUT: <code>{lista}</code>
+    <b>ᗚ</b> RESULT: <b>{response}[{r_logo}] ({r_text})</b>
+    <b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+    <b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+    <b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+    
+    <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+    <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                         await msg.edit_text(text)
                                         r.set(message.from_user.id, int(time.time()))
     except ProxyError as e:
-        await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER <code>@r0ld3x</code>")
+        await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER <code>@MrItzMe</code>")
         await Client.send_message(chat_id=loggp, text="Proxy Dead In Ci Gate")
     except Exception as e:
         await Client.send_message(chat_id=loggp, text=e)
