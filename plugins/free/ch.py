@@ -21,7 +21,7 @@ headers = {
 
 
 
-
+r = antidb
 
 @Client.on_message(filters.command(["ch","chk"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 async def ch(Client, message):
