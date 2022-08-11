@@ -375,7 +375,7 @@ async def bbchk(Client, message):
 <b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
 <b>ᗚ</b> CREDITS LEFT: {credits_left} Credits
 
-<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                             await msg.edit_text(text)
                                             r.set(message.from_user.id, int(time.time()))
