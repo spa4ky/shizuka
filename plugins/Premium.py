@@ -11,7 +11,7 @@ import json
 @Client.on_message(filters.command(["premium"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 async def sf(Client, message):
   credits = message.text.split(None, 1)[1]
-  r_msg = update.reply_to_message
+  r_msg = message.reply_to_message
   iuser = r_msg.from_user.id
   if message.from_user.id == 1391755824:
     maindb.update_one({'_id': iuser},{
