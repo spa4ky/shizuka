@@ -5,6 +5,7 @@ from requests.exceptions import ProxyError
 import re
 import bs4
 #from defs import *
+from values import *
 from pyrogram import Client, filters
 import json
 
@@ -12,7 +13,7 @@ import json
 async def zck(Client, message):
     try:
         started_time = time.time()
-        verified_gps = open("groups.txt", "r")
+        verified_gps = open("files/groups.txt", "r")
         verified_gps = verified_gps.readlines()
         if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
             await message.reply_text(text="""<b>This Group Is Not Verified. Talk With <code>@r0ld3x</code> And Ask For Verification.</b>""",reply_to_message_id=message.message_id)
