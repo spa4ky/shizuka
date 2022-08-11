@@ -17,7 +17,7 @@ async def sk(Client, message):
     req = requests.get(f"https://api.sdbots.tk/sk?key={key}").json()
     response = req['response']
     sk_key = req['sk_key']
-    if response = "✅ Live Key!":
+    if response == "✅ Live Key!":
       text f"""
 <b>✅ LIVE KEY</b>      
 
