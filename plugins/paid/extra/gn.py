@@ -207,7 +207,7 @@ async def sa(Client, message):
                                         if response is None:
                                             await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER @MrItzMe")
                                         else:
-                                            credits = find['credits']
+                                            credits = int(find['credits'])
                                             credits_left = credits - 2
                                             maindb.update_one({'_id': message.from_user.id},{'$set': {'credits': credits_left}},upsert=False)
                                             text = f"""
