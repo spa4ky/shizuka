@@ -10,6 +10,8 @@ from pyrogram import Client, filters
 import json
 import base64
 
+r = antidb
+
 @Client.on_message(filters.command("vbv", prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 async def ci(Client, message):
     try:
