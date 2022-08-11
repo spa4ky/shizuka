@@ -4,7 +4,7 @@ import requests
 from requests.exceptions import ProxyError
 import re
 import bs4
-from defs import *
+#from defs import *
 from pyrogram import Client, filters
 import json
 
