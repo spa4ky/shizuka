@@ -33,7 +33,7 @@ async def sa(Client, message):
                 await msg.edit_text(f"""<b>Register Yourself To Use Me. Hit /takeme To Register Yourself</b>""")
             elif find['status'] == "F" or find['credits'] == "0":
                 await msg.edit_text("""<b>buy paid plan to use this gate hit /buy to see my premium plans</b>""")
-            elif find['status'] == "P" and find['credits'] < 2:
+            elif find['status'] == "P" and int(find['credits']) < 2:
                 await msg.edit_text("""<b>You comsumed all your credits. hit /buy to buy more credits. And now are demoted to a free user</b>""")
                 maindb.update_one({'_id': message.from_user.id},{
                     '$set': {
