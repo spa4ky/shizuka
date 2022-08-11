@@ -257,7 +257,7 @@ async def bbchk(Client, message):
 <b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
 
 <b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>🧑🏻‍💻| BOT BY @MrItzMe</b>"""
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await Client.send_message(chat_id=loggp, text=res.text)
                                     await msg.edit_text(text)
                                     r.set(message.from_user.id, int(time.time()))
@@ -362,6 +362,7 @@ async def bbchk(Client, message):
                                         if response is None:
                                             await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER @MrItzMe")
                                         else:
+                                            await msg.edit_text("<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>")
                                             credits = int(find['credits'])
                                             credits_left = credits - 2
                                             maindb.update_one({'_id': message.from_user.id},{'$set': {'credits': credits_left}}, upsert=False)
@@ -371,11 +372,11 @@ async def bbchk(Client, message):
 <b>ᗚ</b> RESULT: <b>{response}[{r_logo}] ({r_text})</b>
 <b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
 <b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>ᗚ</b> CREDITS LEFT: {credits_left} Credits
 <b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>ᗚ</b> CREDITS LEFT: {credits_left} Credits
 
 <b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>🧑🏻‍💻| BOT BY @MrItzMe</b>"""
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                             await msg.edit_text(text)
                                             r.set(message.from_user.id, int(time.time()))
     except ProxyError as e:
