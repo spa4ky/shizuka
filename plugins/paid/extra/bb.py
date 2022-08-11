@@ -10,23 +10,23 @@ from pyrogram import Client, filters
 import json
 import uuid
 
-@Client.on_message(filters.command(["bblk"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
-
-async def sa(Client, message):
+@Client.on_message(filters.command(["bb"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
+async def bbchk(Client, message):
     try:
         started_time = time.time()
         verified_gps = open("files/groups.txt", "r")
         verified_gps = verified_gps.readlines()
         if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
-            await message.reply_text(text="""<b>This Group Is Not Verified. Talk With <code>@r0ld3x</code> And Ask For Verification.</b>""",reply_to_message_id=message.message_id)
+            await message.reply_text(text="""<b>This Group Is Not Verified. Talk With <code>@MrItzMe</code> And Ask For Verification.</b>""",reply_to_message_id=message.message_id)
         else:
             text = f"""
 <b>〄</b> GATE: <b>BLACKBAUD 10$</b>
-<b>○</b> RESULT: <b>CHECKING YOUR INPUT</b>
-<b>○</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+<b>ᗚ</b> RESULT: <b>CHECKING YOUR INPUT</b>
+<b>ᗚ</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>🧑🏻‍💻| BOT BY @MrItzMe</b>"""
             msg = await message.reply_text(text=text,reply_to_message_id=message.message_id)
             await Client.send_chat_action(message.chat.id, "typing")
             client = pymongo.MongoClient(mongourl, serverSelectionTimeoutMS=5000)
@@ -250,27 +250,29 @@ async def sa(Client, message):
                                 if 'block list due to repeated authorization failures' in res.text:
                                     text = f"""
 <b>〄</b> GATE: <b>BLACKBAUD 10$</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> RESULT: <b>REJECTED[❌] (PROXY ERROR)</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
-<b>○</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [{find['role']}]</b>
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>REJECTED[❌] (PROXY ERROR)</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+<b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY @MrItzMe</b>"""
                                     await Client.send_message(chat_id=loggp, text=res.text)
                                     await msg.edit_text(text)
                                     r.set(message.from_user.id, int(time.time()))
                                 else:
                                     text = f"""
 <b>〄</b> GATE: <b>BLACKBAUD 10$</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> RESULT: <b>ALMOST COMPLETED</b>
-<b>○</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
-<b>○</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [{find['role']}]</b>
-<b>○</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>ALMOST COMPLETED</b>
+<b>ᗚ</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+<b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
+
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     try:
                                         if 'block list due to repeated authorization failures' in res.text:
@@ -358,26 +360,26 @@ async def sa(Client, message):
                                         await Client.send_message(chat_id=loggp, text=e)
                                     else:
                                         if response is None:
-                                            await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER @r0ld3x")
+                                            await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER @MrItzMe")
                                         else:
-                                            await msg.edit_text("Gmmak Tamai Itim")
                                             credits = int(find['credits'])
                                             credits_left = credits - 2
                                             maindb.update_one({'_id': message.from_user.id},{'$set': {'credits': credits_left}}, upsert=False)
                                             text = f"""
 <b>〄</b> GATE: <b>BLACKBAUD 10$</b>
-<b>○</b> INPUT: <code>{lista}</code>
-<b>○</b> RESULT: <b>{response}[{r_logo}] ({r_text})</b>
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
-<b>○</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>○</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [{find['role']}]</b>
-<b>○</b> CREDITS LEFT: {credits_left}credits
-<b>○</b> TIME TAKING: {get_time_taken(started_time)}'s
-<b>○</b> BOT BY: <b>@RoldexVerse</b>"""
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>{response}[{r_logo}] ({r_text})</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+<b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> CREDITS LEFT: {credits_left} Credits
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY @MrItzMe</b>"""
                                             await msg.edit_text(text)
                                             r.set(message.from_user.id, int(time.time()))
     except ProxyError as e:
-        await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER <code>@r0ld3x</code>")
+        await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER <code>@MrItzMe</code>")
         await Client.send_message(chat_id=loggp, text="Proxy Dead In st Gate")
     except Exception as e:
         await Client.send_message(chat_id=loggp, text=e)
