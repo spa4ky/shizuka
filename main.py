@@ -16,7 +16,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 bot = Client(
-    'cc-chkbot',
+    'cc-bot-new',
     api_id= 3176510, #get it from https://my.telegram.org/auth
     api_hash="df02110f33f1703026c28801e5fa0731", #get it from https://my.telegram.org/auth
     bot_token="1844824479:AAHec9EzAQEmhK0H603BQ9to9kxGzoDWvEw", #get it from @Botfather
