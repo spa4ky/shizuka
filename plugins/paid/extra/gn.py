@@ -156,7 +156,7 @@ async def sa(Client, message):
                                     r.set(message.from_user.id, int(time.time()))
                                 else:
                                     url = json_text['url']
-                                    id = re.search(r'wPaymentToken=(.*)"}', req.text).group(1)
+                                    id = re.search(r'wPaymentToken=(.*)"}', req.text)
                                     headers = {
 'Accept':'application/json',
 'Accept-Language':'en-IN,en-GB;q=0.9,en-US;q=0.8,en;q=0.7,hi;q=0.6',
