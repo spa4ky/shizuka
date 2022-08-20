@@ -29,21 +29,23 @@ async def sk(Client, message):
       req = requests.get(f"https://api.sdbots.tk/sk?key={key}").json()
       response = req['response']
       sk_key = req['sk_key']
-      if response == "✅ Live Key!":
-        text = f"""
-<b>✅ LIVE KEY</b>      
-      
-<b>KEY:</b> <code>{sk_key}</code>
-
-<b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
-        msg = await msg.edit(text) 
-      else:
+      if status == "Dead ✕":
         text = f"""
 <b>❌ DEAD KEY</b>      
       
 <b>KEY:</b> <code>{sk_key}</code>
+<b>RESPONSE:</b> <code>{response}</code>
+
+<b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""     
+        msg = await msg.edit(text) 
+      else:
+        text = f"""
+<b>✅ LIVE KEY</b>      
       
+<b>KEY:</b> <code>{sk_key}</code>
+<b>RESPONSE:</b> <code>{response}</code>
+
 <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
         msg = await msg.edit(text) 
