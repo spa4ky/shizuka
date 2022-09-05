@@ -17,6 +17,7 @@ async def sk(Client, message):
     else:    
       key = message.text.split(None, 1)[1]
       find = maindb.find_one({"_id": message.from_user.id})
+      credits = int(find['credits'])
       text = f"""
 <b>Checking Your SK Please Wait...</b>
 
@@ -31,22 +32,28 @@ async def sk(Client, message):
       sk_key = req['sk_key']
       status = req['status']
       if status == "Dead ✕":
+        credits_left = credits - 2
+        maindb.update_one({'_id': message.from_user.id},{'$set': {'credits': credits_left}}, upsert=False)
         text = f"""
 <b>❌ DEAD KEY</b>      
       
 <b>KEY:</b> <code>{sk_key}</code>
 <b>RESPONSE:</b> <code>{response}</code>
 
+<b>ᗚ</b> CREDITS LEFT: {credits_left} Credits
 <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""     
         msg = await msg.edit(text) 
       else:
+        credits_left = credits - 2
+        maindb.update_one({'_id': message.from_user.id},{'$set': {'credits': credits_left}}, upsert=False)        
         text = f"""
 <b>✅ LIVE KEY</b>      
       
 <b>KEY:</b> <code>{sk_key}</code>
 <b>RESPONSE:</b> <code>{response}</code>
 
+<b>ᗚ</b> CREDITS LEFT: {credits_left} Credits
 <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
         msg = await msg.edit(text) 
