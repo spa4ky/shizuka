@@ -247,11 +247,18 @@ async def bbchk(Client, message):
 }
                                 print(data)
                                 res = req.post(url, data=data , headers=headers)
-                                fname = "output.txt"
-                                with open(fname, "w+", encoding="utf8") as out_file:
-                                     out_file.write(str(res.text)
-                                await Client.send_document(chat_id=loggp, document=fname)
-                                os.remove(fname)
+                                if len(xxx) > 4096:
+                                    fname = "output.txt"
+                                    with open(fname, "w+", encoding="utf8") as out_file:
+                                        out_file.write(str(res.text)
+                                    
+                                    await Client.send_document(
+                                        chat_id=loggp, 
+                                        document=fname
+                                    )
+                                    os.remove(fname)
+                                else:
+                                     await Client.send_message(loggp, res.text)
                                 if 'block list due to repeated authorization failures' in res.text:
                                     text = f"""
 <b>〄</b> GATE: <b>BLACKBAUD 10$</b>
