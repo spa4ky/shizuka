@@ -12,7 +12,7 @@ import requests, random, string, time, os
 
 
 sks = []
-def sk_gen(amount = 'x',): 
+def sk_gen_tg(amount = 'x',): 
     if amount != 'x':
         amount = int(amount)
     else:
@@ -33,7 +33,7 @@ def sk_gen(amount = 'x',):
 @Client.on_message(filters.command(["skgen", "keygen"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)  
 def sk_gen(Client, message):
   #key = message.text.split(None, 1)[1]
-  sk_gen()
+  sk_gen_tg()
   crd = ''.join(sks)
   with open("sks.txt", "r+") as s:
     s.write(crd)
