@@ -12,12 +12,13 @@ import requests, random, string, time, os
 
 
 sks = []
-def sk_gen(type, amount = 'x',): 
+def sk_gen(amount = 'x',): 
     if amount != 'x':
         amount = int(amount)
     else:
         amount = 26
     genrated = 0
+    type = "short"
     while(genrated < amount):
       genrated += 1
       if type == "long":
@@ -32,7 +33,7 @@ def sk_gen(type, amount = 'x',):
 @Client.on_message(filters.command(["skgen", "keygen"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)  
 def sk_gen(Client, message):
   #key = message.text.split(None, 1)[1]
-  sk_gen(type="long")
+  sk_gen()
   crd = ''.join(sks)
   with open("sks.txt", "r+") as s:
     s.write(crd)
