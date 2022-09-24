@@ -39,33 +39,27 @@ async def myacc(Client, message , update):
           )
   else:
     antispam_time = int(antidb.get(message.reply_to_message.from_user.id).decode("utf-8"))
-text = f"""
-<b>〄 User Information :- </b> 
-
-<b>●</b> First Name: <b>{message.from_user.first_name}</b>
-<b>●</b> User Name: <b>{message.from_user.username}</b>
-<b>●</b> User Id: <b><code>{message.from_user.id}</code></b>
-<b>●</b> Limited: <b>{message.from_user.is_restricted}</b>
-<b>●</b> Profile Link: <b><a href="tg://user?id={message.from_user.id}">Click Here</a></b>
-<b>●</b> Profile Image: <b><a href="{find['image']}">Click Here</a></b>
-
-
-<b>〄 User Database Information :- </b> 
-
-<b>●</b> Role: <b>{find['role']}</b>
-<b>●</b> Plan: <b>{find['plan']}</b>
-<b>●</b> Status: <b>{find['status']}</b>
-<b>●</b> Credits: <b>{find['credits']}</b>
-<b>●</b> AntiSpam Time: <b>{antispam_time}</b>
-
-
-<b>〄 Chat Information :- </b> 
-
-<b>●</b> Chat Name: <b>{message.chat.title}</b>
-<b>●</b> User Name: <b>{message.chat.username}</b>
-<b>●</b> Chat Id: <b><code>{message.chat.id}</code></b>
-<b>●</b> Chat Type: <b>{message.chat.type.capitalize()}</b>
-"""
+    text = f"""
+<b>〄</b> User Information:-
+<b>○</b> First Name: <b>{message.reply_to_message.from_user.first_name}</b>
+<b>○</b> User Name: <b>{message.reply_to_message.from_user.username}</b>
+<b>○</b> User Id: <b><code>{message.reply_to_message.from_user.id}</code></b>
+<b>○</b> Limited: <b>{message.reply_to_message.from_user.is_restricted}</b>
+<b>○</b> Profile Link: <b><a href="tg://user?id={message.reply_to_message.from_user.id}">Click Here</a></b>
+<b>○</b> Profile Image: <b><a href="{find['image']}">Click Here</a></b>
+<b>〄</b> User Database Information:-
+<b>○</b> Role: <b>{find['role']}</b>
+<b>○</b> Plan: <b>{find['plan']}</b>
+<b>○</b> Status: <b>{find['status']}</b>
+<b>○</b> Credits: <b>{find['credits']}</b>
+<b>○</b> Live Cards: <b>COMING SOON</b>
+<b>○</b> AntiSpam Time: <b>{datetime.utcfromtimestamp(antispam_time).strftime('%H:%M:%S %d-%m-%Y')}</b>
+<b>〄</b> Chat Information:-
+<b>○</b> Chat Name: <b>{message.reply_to_message.chat.title}</b>
+<b>○</b> User Name: <b>{message.reply_to_message.chat.username}</b>
+<b>○</b> Chat Id: <b><code>{message.reply_to_message.chat.id}</code></b>
+<b>○</b> Chat Type: <b>{message.reply_to_message.chat.type.capitalize()}</b>
+      """
     await Client.edit_message_text(
         chat_id=message.chat.id,
         text=text,
