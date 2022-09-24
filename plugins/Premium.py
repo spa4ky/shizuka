@@ -21,7 +21,6 @@ async def sf(Client, message):
               "role": "PAID USER",
               "status": "P",
               "credits": credits
-              
             }}, upsert=False)
             await message.reply_text("<b>Success..!✅️</b>")
             else:
