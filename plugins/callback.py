@@ -90,8 +90,9 @@ async def gates(Client, message,update):
 
   ]
   ]
-    reply_markup = InlineKeyboardMarkup(buttons)
-    text="""<b>Seems like You are interested in my Commands?
+    
+  reply_markup = InlineKeyboardMarkup(buttons)
+  text="""<b>Seems like You are interested in my Commands?
 
 Press Below buttons to know my Commands</b>"""
   await Client.edit_message_text(
