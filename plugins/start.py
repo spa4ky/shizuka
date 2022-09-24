@@ -34,6 +34,6 @@ I Am Shizuka, an advanced multifunctional cc checker bot with many useful tools 
 
 Press below buttons to know More..!
 
-POWERED BY: <a href="tg://openmessage?user_id=1846020026">S P A R K Y</a></b>
+POWERED BY: S P A R K Y</b>
 """
     await Client.send_message(chat_id=message.chat.id,text=caption,reply_to_message_id=message.message_id,reply_markup=REPLY_MARKUP)
