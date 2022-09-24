@@ -181,7 +181,9 @@ FREE
 async def auth(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='paid'),
+        InlineKeyboardButton('️⬅️ Back ⬅️', callback_data='gates')
+    ],
+    [
         InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
@@ -211,7 +213,9 @@ AUTH
 async def charge(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='paid'),
+        InlineKeyboardButton('️⬅️ Back ⬅️', callback_data='gates')
+    ],
+    [
         InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
@@ -240,7 +244,9 @@ CHARGE
 async def extra(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='paid'),
+        InlineKeyboardButton('️⬅️ Back ⬅️', callback_data='gates')
+    ],
+    [
         InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
@@ -270,10 +276,12 @@ EXTRA
 async def buy(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('💰 Buy 💰', url='https://t.me/SPA4KY'),
+        InlineKeyboardButton('💰 Buy 💰', url='https://t.me/SPA4KY')
     ],
     [
-        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='gates'),
+        InlineKeyboardButton('️⬅️ Back ⬅️', callback_data='gates')
+    ],
+    [
         InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
