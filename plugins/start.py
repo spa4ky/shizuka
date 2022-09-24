@@ -21,8 +21,6 @@ REPLY_MARKUP  = InlineKeyboardMarkup([
 ])
 
 
-BOT_PIC = "https://te.legra.ph/file/4f68128eb38ac812952e2.jpg"
-
 @Client.on_message(filters.command(['start', f'start@{BOT_USERNAME}'],prefixes=['.','/','!'],case_sensitive=False) & filters.text)
 async def start(Client, message):
     await Client.send_chat_action(message.chat.id, "typing")
@@ -31,7 +29,7 @@ async def start(Client, message):
         
     caption = f"""
 <b>{get_part_of_day()} <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[<code>{message.from_user.id}</code>],
-
+[{}](https://telegra.ph/file/b5d707edb1ae9c84c7e10.jpg).!❤
 I Am Shizuka, an advanced multifunctional cc checker bot with many useful tools and accounts checker.
 
 Press below buttons to know More..!
