@@ -181,11 +181,7 @@ FREE
 async def auth(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('💰 Buy 💰', callback_data='buy'),
-        InlineKeyboardButton('🔴 Charge 🔴', callback_data='charge')
-    ],
-    [
-        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='gates'),
+        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='paid'),
         InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
@@ -215,11 +211,7 @@ AUTH
 async def charge(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('💰 Buy 💰', callback_data='buy'),
-        InlineKeyboardButton('🟣 Extra 🟣', callback_data='extra')
-    ],
-    [
-        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='gates'),
+        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='paid'),
         InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
@@ -247,10 +239,6 @@ CHARGE
 # EXTRA GATES HELP
 async def extra(Client, message , update):
   buttons = [
-    [
-        InlineKeyboardButton('💰 Buy 💰', callback_data='buy'),
-        InlineKeyboardButton('🟢 Auth 🟢', callback_data='auth')
-    ],
     [
         InlineKeyboardButton('⬅️ Back ⬅️', callback_data='paid'),
         InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
@@ -449,11 +437,7 @@ async def button(Client, update):
           elif "charge" in cb_data:
                 await charge(Client, update.message,update)
           elif "extra" in cb_data:
-            await Client.answer_callback_query(
-            callback_query_id=update.id,
-            text="✖️ You Don't Have Any Lives Stored ✖️",
-            show_alert="true"
-          )
+                await extra(Client, update.message,update)
           elif "buy" in cb_data:
                 await buy(Client, update.message,update)
           elif "gen" in cb_data:
