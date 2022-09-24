@@ -1,14 +1,12 @@
+# GENERATE RANDOM CC COMMAND
 import time
 from pyrogram import Client
 import requests
 from requests.exceptions import ProxyError
 import re
-# import bs4
 from values import *
 from pyrogram import Client, filters
 import json
-
-
 
 
 @Client.on_message(filters.command(["gen", "make"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
@@ -21,7 +19,7 @@ async def gen(Client , message):
         else:
             if message.reply_to_message is not None:
                 message.text = message.reply_to_message.text
-            text = f"""<b>WAIT FOR RESULTS</b>"""
+            text = f"""<b>Please Wait...</b>"""
             msg = await message.reply_text(text=text,reply_to_message_id=message.message_id)
             await Client.send_chat_action(message.chat.id, "typing")
             find = maindb.find_one({"_id": message.from_user.id})
@@ -59,7 +57,6 @@ async def gen(Client , message):
                     if len(cc) > 15:
                         await msg.edit_text("Your Bin Is Invalid.")
                     else:
-                        # lista = cc + "|" + mes + "|" + ano + "|" + cvv
                         bin = cc[:6]
                         res = requests.get("https://bin-check-dr4g.herokuapp.com/api/" + bin)
                         if res.status_code != requests.codes.ok or json.loads(res.text)['result'] == False:
@@ -72,13 +69,14 @@ async def gen(Client , message):
                             cards = ''.join(ccs)
                             ccs.clear()
                             text = f"""
-<b>〄</b> CC GENRATOR
-<b>○</b> YOUR DATA = {cc}|{mes}|{ano}|{cvv}.
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>〄 CC Generator :- </b> 
+
+<b>●</b> Your Data: <b>{cc}|{mes}|{ano}|{cvv}</b>
+<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
 
 <code>{cards} </code>"""       
-                            buttons = [[InlineKeyboardButton('GEN AGAIN', callback_data='gen')]]   
+                            buttons = [[InlineKeyboardButton('🔄 Gen Again 🔄', callback_data='gen')]]   
                             reply_markup = InlineKeyboardMarkup(buttons)
                             await msg.edit_text(text,reply_markup=reply_markup)
     except Exception as e:

@@ -1,3 +1,4 @@
+# BAN BIN COMMAND
 import math
 import time
 from typing import Text
@@ -34,11 +35,10 @@ async def banbin(Client, message):
                 file = open('files/bannedbin.txt', 'a+') 
                 file.write(str(bin) + "\n")
                 file.close()
-                await message.reply_text(text="<b>BANNED</b>",reply_to_message_id=message.message_id)
+                await message.reply_text(text="<b>Bin Banned Successfully ✅️</b>",reply_to_message_id=message.message_id)
             else:
-                await message.reply_text(text="<b>ALREADY BANNED</b>",reply_to_message_id=message.message_id)
+                await message.reply_text(text="<b>Bin Already Banned ✅️</b>",reply_to_message_id=message.message_id)
     except IndexError as e:
         print(e)
     except Exception as e:
-        print(e)  
-
+        print(e)

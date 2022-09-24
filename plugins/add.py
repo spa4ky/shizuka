@@ -1,3 +1,4 @@
+# ADD GROUP TO AUTHO GROUPS
 import math
 import time
 from typing import Text
@@ -31,11 +32,10 @@ async def bin(Client, message):
                 file = open('files/groups.txt', 'a+') 
                 file.write(str(message.chat.id) + "\n")
                 file.close()
-                await message.reply_text(text="<b>ADDED</b>",reply_to_message_id=message.message_id)
+                await message.reply_text(text="<b>Added to Auth Groups..!✅️</b>",reply_to_message_id=message.message_id)
             else:
-                await message.reply_text(text="<b>ALREADY ADDED</b>",reply_to_message_id=message.message_id)
+                await message.reply_text(text="<b>Already Authorised..!✅️</b>",reply_to_message_id=message.message_id)
     except IndexError as e:
         print(e)
     except Exception as e:
-        print(e)  
-
+        print(e)

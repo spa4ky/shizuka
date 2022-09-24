@@ -1,10 +1,10 @@
+# SK KEY GENERATOR COMMAND
 import time
 from pyrogram import Client
 import requests
 from requests.exceptions import ProxyError
 import re
 import bs4
-#from defs import *
 from values import *
 from pyrogram import Client, filters
 import json
@@ -32,11 +32,10 @@ def sk_gen_tg(amount = 'x',):
       
 @Client.on_message(filters.command(["skgen", "keygen"], prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)  
 def sk_gen(Client, message):
-  #key = message.text.split(None, 1)[1]
   sk_gen_tg()
   crd = ''.join(sks)
   with open("sks.txt", "r+") as s:
     s.write(crd)
   sks.clear()   
   message.reply_document("sks.txt")
-  os.remove("sks.txt")      
+  os.remove("sks.txt")

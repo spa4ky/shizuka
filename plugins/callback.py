@@ -14,14 +14,16 @@ from pyrogram.types import (
     CallbackQuery, InlineQuery, update)
 
 
+
+
 async def myacc(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('💳 MY LIVE 💳', callback_data='mylives'),
-        InlineKeyboardButton('🚪 GATES 🚪', callback_data='gates')
+        InlineKeyboardButton('💳 My Lives 💳', callback_data='mylives'),
+        InlineKeyboardButton('➡️ Gates ➡️', callback_data='gates')
     ],
     [
-        InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+        InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
   reply_markup = InlineKeyboardMarkup(buttons)
@@ -29,7 +31,7 @@ async def myacc(Client, message , update):
     "_id": message.reply_to_message.from_user.id,
 })
   if isinstance(find, type(None)) == True:
-    text = """ Register First Hit /takeme to register yourself"""
+    text = """<b>⚠️ Use /register to Register Yourself..! ⚠️</b>"""
     await Client.answer_callback_query(
             callback_query_id=update.id,
             text=text,
@@ -37,29 +39,33 @@ async def myacc(Client, message , update):
           )
   else:
     antispam_time = int(antidb.get(message.reply_to_message.from_user.id).decode("utf-8"))
-    text = f"""
-<b>〄</b> User Information:-
-<b>○</b> First Name: <b>{message.reply_to_message.from_user.first_name}</b>
-<b>○</b> User Name: <b>{message.reply_to_message.from_user.username}</b>
-<b>○</b> User Id: <b><code>{message.reply_to_message.from_user.id}</code></b>
-<b>○</b> Limited: <b>{message.reply_to_message.from_user.is_restricted}</b>
-<b>○</b> Profile Link: <b><a href="tg://user?id={message.reply_to_message.from_user.id}">Click Here</a></b>
-<b>○</b> Profile Image: <b><a href="{find['image']}">Click Here</a></b>
+text = f"""
+<b>〄 User Information :- </b> 
 
-<b>〄</b> User Database Information:-
-<b>○</b> Role: <b>{find['role']}</b>
-<b>○</b> Plan: <b>{find['plan']}</b>
-<b>○</b> Status: <b>{find['status']}</b>
-<b>○</b> Credits: <b>{find['credits']}</b>
-<b>○</b> Live Cards: <b>COMING SOON</b>
-<b>○</b> AntiSpam Time: <b>{datetime.utcfromtimestamp(antispam_time).strftime('%H:%M:%S %d-%m-%Y')}</b>
+<b>●</b> First Name: <b>{message.from_user.first_name}</b>
+<b>●</b> User Name: <b>{message.from_user.username}</b>
+<b>●</b> User Id: <b><code>{message.from_user.id}</code></b>
+<b>●</b> Limited: <b>{message.from_user.is_restricted}</b>
+<b>●</b> Profile Link: <b><a href="tg://user?id={message.from_user.id}">Click Here</a></b>
+<b>●</b> Profile Image: <b><a href="{find['image']}">Click Here</a></b>
 
-<b>〄</b> Chat Information:-
-<b>○</b> Chat Name: <b>{message.reply_to_message.chat.title}</b>
-<b>○</b> User Name: <b>{message.reply_to_message.chat.username}</b>
-<b>○</b> Chat Id: <b><code>{message.reply_to_message.chat.id}</code></b>
-<b>○</b> Chat Type: <b>{message.reply_to_message.chat.type.capitalize()}</b>
-      """
+
+<b>〄 User Database Information :- </b> 
+
+<b>●</b> Role: <b>{find['role']}</b>
+<b>●</b> Plan: <b>{find['plan']}</b>
+<b>●</b> Status: <b>{find['status']}</b>
+<b>●</b> Credits: <b>{find['credits']}</b>
+<b>●</b> AntiSpam Time: <b>{antispam_time}</b>
+
+
+<b>〄 Chat Information :- </b> 
+
+<b>●</b> Chat Name: <b>{message.chat.title}</b>
+<b>●</b> User Name: <b>{message.chat.username}</b>
+<b>●</b> Chat Id: <b><code>{message.chat.id}</code></b>
+<b>●</b> Chat Type: <b>{message.chat.type.capitalize()}</b>
+    """
     await Client.edit_message_text(
         chat_id=message.chat.id,
         text=text,
@@ -67,22 +73,32 @@ async def myacc(Client, message , update):
         message_id=message.message_id,
         disable_web_page_preview=True
     )
-    
-    
-async def gates(Client, message,update):
-  buttons = [
-  [
-      InlineKeyboardButton('🎁 FREE 🎁', callback_data='free'), 
-      InlineKeyboardButton('💲 PAID 💲', callback_data='paid')
-  ],
-  [
-      InlineKeyboardButton('🛠️ TOOLS 🛠️', callback_data='tools'),
-      InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
 
-  ]
-  ]
-  reply_markup = InlineKeyboardMarkup(buttons)
-  text="""Check Down My Commands"""
+
+
+
+
+
+
+
+
+
+# GATES HELP MENU 
+async def gates(Client, message,update):
+buttons = [
+        [
+            InlineKeyboardButton('🟢 Free 🟢', callback_data='free'), 
+            InlineKeyboardButton('💰 Paid 💰', callback_data='paid')
+        ],
+        [
+            InlineKeyboardButton('️⚙️ Tools ⚙️', callback_data='tools'),
+            InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
+        ]
+        ]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        text="""<b>Seems like You are interested in my Commands?
+
+Press Below buttons to know my Commands</b>"""
   await Client.edit_message_text(
       chat_id=message.chat.id,
       text=text,
@@ -90,20 +106,29 @@ async def gates(Client, message,update):
       message_id=message.message_id,
       disable_web_page_preview=True
   )
-  
-  
+
+
+
+
+
+
+
+
+
+
+# PAID COMMANDS HELP
 async def paid(Client, message,update):
   buttons = [
   [
-      InlineKeyboardButton('🟢 AUTH 🟢', callback_data='auth'), 
-      InlineKeyboardButton('🔴 CHARGE 🔴', callback_data='charge')
+      InlineKeyboardButton('🟢 Auth 🟢', callback_data='auth'), 
+      InlineKeyboardButton('🔴 Charge 🔴', callback_data='charge')
   ],
   [
-      InlineKeyboardButton('🟣 EXTRA 🟣', callback_data='extra'),
-      InlineKeyboardButton('🛠️ TOOLS 🛠️', callback_data='tools')
+      InlineKeyboardButton('🟣 Extra 🟣', callback_data='extra'),
+      InlineKeyboardButton('️⚙️ Tools ⚙️', callback_data='tools')
   ],
   [
-      InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+      InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
   ]
   ]
   reply_markup = InlineKeyboardMarkup(buttons)
@@ -115,26 +140,29 @@ async def paid(Client, message,update):
       message_id=message.message_id,
       disable_web_page_preview=True
   )
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+# FREE GATES HELP
 async def free(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('↩️ RETURN ↩️', callback_data='gates')
+        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='gates')
     ],
     [
-        InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+        InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
   reply_markup = InlineKeyboardMarkup(buttons)
   text = """
-<b>〄</b> Free Gates:-
-
-<b>○</b> <b>/ca</b>: <b>Stripe Auth [1]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/ch</b>: <b>Stripe Auth [2]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/ci</b>: <b>Stripe Auth [3]</b> || <b>Status: On ✅</b>
+FREE
 """
   await Client.edit_message_text(
       chat_id=message.chat.id,
@@ -143,35 +171,31 @@ async def free(Client, message , update):
       message_id=message.message_id,
       disable_web_page_preview=True
   )
-  
+
+
+
+
+
+
+
+
+
+
+# AUTH GATES HELP MENU
 async def auth(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('🛒 BUY 🛒', callback_data='buy'),
-        InlineKeyboardButton('🔴 CHARGE 🔴', callback_data='charge')
+        InlineKeyboardButton('💰 Buy 💰', callback_data='buy'),
+        InlineKeyboardButton('🔴 Charge 🔴', callback_data='charge')
     ],
     [
-        InlineKeyboardButton('↩️ RETURN ↩️', callback_data='gates'),
-        InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='gates'),
+        InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
   reply_markup = InlineKeyboardMarkup(buttons)
-# abcdefghijklmnopqrstuvwxyz
   text = """
-<b>〄</b> Auth Gates:-
-<b>📢</b> <b><i>2 credits per check.</i></b>
-<b>○</b> <b>/sa</b>: <b>Stripe [1]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/sc</b>: <b>Stripe [2]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/sf</b>: <b>Stripe [3]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/sh</b>: <b>Stripe [4]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/si</b>: <b>Stripe [5]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/sl</b>: <b>Stripe [6]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/sm</b>: <b>Stripe [7]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/so</b>: <b>Stripe [8]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/sp</b>: <b>Stripe [9]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/ss</b>: <b>Stripe [10]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/st</b>: <b>Stripe [11]</b> || <b>Status: On ✅</b>
-<b>○</b> <b>/su</b>: <b>Stripe [12]</b> || <b>Status: On ✅</b>
+AUTH
 """
   await Client.edit_message_text(
       chat_id=message.chat.id,
@@ -182,28 +206,30 @@ async def auth(Client, message , update):
   )
   
 
+
+
+
+
+
+
+
+
+
+# CHARGE GATES HELP
 async def charge(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('🛒 BUY 🛒', callback_data='buy'),
-        InlineKeyboardButton('🟣 EXTRA 🟣', callback_data='extra')
+        InlineKeyboardButton('💰 Buy 💰', callback_data='buy'),
+        InlineKeyboardButton('🟣 Extra 🟣', callback_data='extra')
     ],
     [
-        InlineKeyboardButton('↩️ RETURN ↩️', callback_data='gates'),
-        InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='gates'),
+        InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
   reply_markup = InlineKeyboardMarkup(buttons)
   text = """
-<b>〄</b> Charge Gates:-
-<b>📢</b> <b><i>2 credits per check.</i></b>
-
-<b>○</b> <b>/za</b>: <b>Stripe [1]</b> || <b>Status: On ✅ </b>
-<b>○</b> <b>/zc</b>: <b>Stripe [2]</b> || <b>Status: On ✅ </b>
-<b>○</b> <b>/zm</b>: <b>Stripe [4]</b> || <b>Status: On ✅ </b>
-<b>○</b> <b>/zo</b>: <b>Stripe [5]</b> || <b>Status: On ✅ </b>
-<b>○</b> <b>/zt</b>: <b>Stripe [6]</b> || <b>Status: Off ❌</b>
-<b>○</b> <b>/zu</b>: <b>Stripe [7]</b> || <b>Status: Off ❌</b>
+CHARGE
 """
   await Client.edit_message_text(
       chat_id=message.chat.id,
@@ -213,27 +239,30 @@ async def charge(Client, message , update):
       disable_web_page_preview=True
   )
 
+
+
+
+
+
+
+
+
+
+# EXTRA GATES HELP
 async def extra(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('🛒 BUY 🛒', callback_data='buy'),
-        InlineKeyboardButton('🟢 AUTH 🟢', callback_data='auth')
+        InlineKeyboardButton('💰 Buy 💰, callback_data='buy'),
+        InlineKeyboardButton('🟢 Auth 🟢', callback_data='auth')
     ],
     [
-        InlineKeyboardButton('↩️ RETURN ↩️', callback_data='paid'),
-        InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='paid'),
+        InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
   reply_markup = InlineKeyboardMarkup(buttons)
   text = """
-<b>〄</b> Extra Gates:-
-
-<b>○</b> <b>/za</b>: <b>Stripe Auth [1]</b> || <b>Status: Off ❌</b>
-<b>○</b> <b>/zc</b>: <b>Stripe Auth [2]</b> || <b>Status: Off ❌</b>
-<b>○</b> <b>/zm</b>: <b>Stripe Auth [4]</b> || <b>Status: Off ❌</b>
-<b>○</b> <b>/zo</b>: <b>Stripe Auth [5]</b> || <b>Status: Off ❌</b>
-<b>○</b> <b>/zt</b>: <b>Stripe Auth [6]</b> || <b>Status: Off ❌</b>
-<b>○</b> <b>/zu</b>: <b>Stripe Auth [7]</b> || <b>Status: Off ❌</b>
+EXTRA
 """
   await Client.edit_message_text(
       chat_id=message.chat.id,
@@ -242,28 +271,31 @@ async def extra(Client, message , update):
       message_id=message.message_id,
       disable_web_page_preview=True
   )
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+#BOT BUY MESSAGE
 async def buy(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('🛒 BUY 🛒', url='https://t.me/MrItzMe'),
-        InlineKeyboardButton('ℹ CHANNEL ℹ', url='https://t.me/SDBots')
+        InlineKeyboardButton('💰 Buy 💰', url='https://t.me/SPA4KY'),
     ],
     [
-        InlineKeyboardButton('↩️ RETURN ↩️', callback_data='gates'),
-        InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='gates'),
+        InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
   reply_markup = InlineKeyboardMarkup(buttons)
   text = """
-<b>〄</b> Prices:-
-
-<b>○</b> <b>5$</b>: <b>250 Credits</b> || <b>Access all gates</b>
-<b>○</b> <b>10$</b>: <b>600 Credits</b> || <b>Access all gates</b>
-<b>○</b> <b>20$</b>: <b>1500 Credits</b> || <b>Access all gates</b>
-<b>○</b> <b>25$</b>: <b>3000 Credits</b> || <b>Access all gates</b>
-<b>📢</b> <b><i>ONLY ACCEPTED CRYPTO CURRRENCY && UPI.</i></b>
+BUY
 """
   await Client.edit_message_text(
       chat_id=message.chat.id,
@@ -273,19 +305,25 @@ async def buy(Client, message , update):
       disable_web_page_preview=True
   )
 
+
+
+
+
+
+
+
+
+
+## CC GENERATOR COMMAND
 async def gen(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('🛒 BUY 🛒', url='https://t.me/MrItzMe'),
-        InlineKeyboardButton('ℹ CHANNEL ℹ', url='https://t.me/SDBOTs_inifinity')
-    ],
-    [
-        InlineKeyboardButton('↩️ RETURN ↩️', callback_data='gates'),
-        InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+        InlineKeyboardButton('⬅️ Back ⬅️', callback_data='gates'),
+        InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
   reply_markup = InlineKeyboardMarkup(buttons)
-  msg = re.search(r'YOUR DATA = (.*).\n', update.message.text).group(1)
+  msg = re.search(r'Your Data = (.*).\n', update.message.text).group(1)
   input = re.findall(r"[0-9]+", msg)
   if len(input) == 0:
       text = "Your Bin Is Empty"
@@ -331,14 +369,15 @@ async def gen(Client, message , update):
             cc_gen(cc,mes,ano,cvv)
             cards = ''.join(ccs)
             ccs.clear()
-            text = f"""
-<b>〄</b> CC GENRATOR
-<b>○</b> YOUR DATA = {cc}|{mes}|{ano}|{cvv}.
-<b>○</b> BANK INFO: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>○</b> BIN INFO: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+            text = f""""
+<b>〄 CC Generator :- </b> 
 
-<code>{cards} </code>"""       
-            buttons = [[InlineKeyboardButton('GEN AGAIN', callback_data='gen')]]   
+<b>●</b> Your Data: <b>{cc}|{mes}|{ano}|{cvv}</b>
+<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
+<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+
+<code>{cards} </code>"""
+            buttons = [[InlineKeyboardButton('🔄 Gen Again 🔄', callback_data='gen')]]   
             reply_markup = InlineKeyboardMarkup(buttons)
             await Client.edit_message_text(
                 chat_id=message.chat.id,
@@ -347,27 +386,31 @@ async def gen(Client, message , update):
                 message_id=message.message_id,
                 disable_web_page_preview=True
   )
-  
 
+
+
+
+
+
+
+
+
+
+
+# TOOLS MENU
 async def tools(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('↩️ RETURN ↩️', callback_data='gates')
+        InlineKeyboardButton('️⬅️ Back ⬅️', callback_data='gates')
     ],
     [
-        InlineKeyboardButton('🚪 CLOSE 🚪', callback_data='close')
+        InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
     ]
     ]
   reply_markup = InlineKeyboardMarkup(buttons)
   text = """
-<b>〄</b> Tools:-
-
-<b>○</b> <b>/info</b>: <b>Your Information</b>
-<b>○</b> <b>/bin</b>: <b>Bin Information</b>
-<b>○</b> <b>/gen</b>: <b>Genrate ccs from bin</b>
-<b>○</b> <b>/vbv</b>: <b>Check for vbv</b>
+TOOLS
 """
-# <b>/ci</b>: <b>Stripe Auth</b> || <b>Status: On ✅</b>
   await Client.edit_message_text(
       chat_id=message.chat.id,
       text=text,
@@ -379,12 +422,21 @@ async def tools(Client, message , update):
 
 
 
+
+
+
+
+
+
+# BUTTON PROTECTION 
 @Client.on_callback_query()
 async def button(Client, update):
       cb_data = update.data
       try: 
-        text = f"""Action Not Allowed
-This Buttons Is only For {update.message.reply_to_message.from_user.first_name} [{update.message.reply_to_message.from_user.id}]"""""
+        text = f"""✖️ Not Allowed : This Buttons is Only for {update.message.reply_to_message.from_user.first_name} [{update.message.reply_to_message.from_user.id}] ✖️"""
+
+
+
         if update.message.reply_to_message.from_user.id == update.from_user.id:
           if "myacc" in cb_data:
             await myacc(Client, update.message,update)
@@ -401,10 +453,9 @@ This Buttons Is only For {update.message.reply_to_message.from_user.first_name} 
           elif "charge" in cb_data:
                 await charge(Client, update.message,update)
           elif "extra" in cb_data:
-                # await extra(Client, update.message,update)
             await Client.answer_callback_query(
             callback_query_id=update.id,
-            text="🔜Coming Soon🔜",
+            text="✖️ You Don't Have Any Lives Stored ✖️",
             show_alert="true"
           )
           elif "buy" in cb_data:
@@ -416,7 +467,7 @@ This Buttons Is only For {update.message.reply_to_message.from_user.first_name} 
           elif "mylives" in cb_data:
             await Client.answer_callback_query(
             callback_query_id=update.id,
-            text="🔜Coming Soon🔜",
+            text="✖️ You Don't Have Any Lives Stored ✖️",
             show_alert="true"
           )
         else:
@@ -431,12 +482,3 @@ This Buttons Is only For {update.message.reply_to_message.from_user.first_name} 
           print(e)
       except Forbidden as e:
           print(e)
-        
-        
-        
-# import timeit
-
-# start = timeit.timeit()
-# print("hello")
-# end = timeit.timeit()
-# print(end - start)
