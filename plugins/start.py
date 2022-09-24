@@ -29,7 +29,7 @@ async def start(Client, message):
         
     caption = f"""
 <b>{get_part_of_day()} <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[<code>{message.from_user.id}</code>],
-[{❤️}](https://telegra.ph/file/b5d707edb1ae9c84c7e10.jpg).!❤
+[{}](https://telegra.ph/file/b5d707edb1ae9c84c7e10.jpg).!❤
 I Am Shizuka, an advanced multifunctional cc checker bot with many useful tools and accounts checker.
 
 Press below buttons to know More..!
