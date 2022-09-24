@@ -38,4 +38,4 @@ Press below buttons to know More..!
 
 POWERED BY: <a href="t.me/SPA4KY">S P A R K Y</a></b>
 """
-    await Client.send_message(BOT_PIC,chat_id=message.chat.id,text=captionreply_to_message_id=message.message_id,reply_markup=REPLY_MARKUP)
+    await Client.send_message(BOT_PIC,chat_id=message.chat.id,text=caption,reply_to_message_id=message.message_id,reply_markup=REPLY_MARKUP)
