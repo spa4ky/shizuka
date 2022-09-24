@@ -80,17 +80,18 @@ async def myacc(Client, message , update):
 # GATES HELP MENU 
 async def gates(Client, message,update):
 buttons = [
-        [
-            InlineKeyboardButton('🟢 Free 🟢', callback_data='free'), 
-            InlineKeyboardButton('💰 Paid 💰', callback_data='paid')
-        ],
-        [
-            InlineKeyboardButton('️⚙️ Tools ⚙️', callback_data='tools'),
-            InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
-        ]
-        ]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        text="""<b>Seems like You are interested in my Commands?
+  [
+      InlineKeyboardButton('🟢 Free 🟢, callback_data='free'), 
+      InlineKeyboardButton('💰 Paid 💰', callback_data='paid')
+  ],
+  [
+      InlineKeyboardButton('️⚙️ Tools ⚙️', callback_data='tools'),
+      InlineKeyboardButton('❗️ Exit ❗️', callback_data='close')
+
+  ]
+  ]
+    reply_markup = InlineKeyboardMarkup(buttons)
+    text="""<b>Seems like You are interested in my Commands?
 
 Press Below buttons to know my Commands</b>"""
   await Client.edit_message_text(
