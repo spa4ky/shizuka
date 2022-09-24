@@ -79,7 +79,7 @@ async def myacc(Client, message , update):
 
 # GATES HELP MENU 
 async def gates(Client, message,update):
-buttons = [
+  buttons = [
   [
       InlineKeyboardButton('🟢 Free 🟢', callback_data='free'), 
       InlineKeyboardButton('💰 Paid 💰', callback_data='paid')
