@@ -248,7 +248,7 @@ CHARGE
 async def extra(Client, message , update):
   buttons = [
     [
-        InlineKeyboardButton('💰 Buy 💰, callback_data='buy'),
+        InlineKeyboardButton('💰 Buy 💰', callback_data='buy'),
         InlineKeyboardButton('🟢 Auth 🟢', callback_data='auth')
     ],
     [
