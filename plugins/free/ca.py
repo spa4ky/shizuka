@@ -106,7 +106,9 @@ async def ca(Client, message):
                                 vendor = bin_data["data"]["vendor"].lower()
                                 curl =  requests.Session()
                                 res = requests.get("https://randomuser.me/api/?nat=us&inc=name,location")
-                                random_data = json.loads(res.text) first_name = random_data['results'][0]['name']['first']
+                                random_data = json.loads(res.text)
+                                # phone_number = "225"+ "-" + str(random.randint(111,999))+ "-" +str(random.randint(0000,9999))
+                                first_name = random_data['results'][0]['name']['first']
                                 last_name = random_data['results'][0]['name']['last']
                                 email = str(''.join(random.choices(string.ascii_lowercase + string.digits, k = 8))) + '@gmail.com'
                                 password = str("".join(random.choices(string.ascii_uppercase + string.digits, k=10)))
