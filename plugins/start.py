@@ -29,7 +29,7 @@ async def start(Client, message):
     if message.reply_to_message is not None:
         message.text = message.reply_to_message.text
         
-    captionx = f"""
+    caption = f"""
 <b>{get_part_of_day()} <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[<code>{message.from_user.id}</code>],
 
 I Am Shizuka, an advanced multifunctional cc checker bot with many useful tools and accounts checker.
