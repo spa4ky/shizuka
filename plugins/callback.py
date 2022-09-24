@@ -65,7 +65,7 @@ text = f"""
 <b>●</b> User Name: <b>{message.chat.username}</b>
 <b>●</b> Chat Id: <b><code>{message.chat.id}</code></b>
 <b>●</b> Chat Type: <b>{message.chat.type.capitalize()}</b>
-    """
+"""
     await Client.edit_message_text(
         chat_id=message.chat.id,
         text=text,
