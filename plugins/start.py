@@ -21,6 +21,8 @@ REPLY_MARKUP  = InlineKeyboardMarkup([
 ])
 
 
+BOT_PIC = "https://te.legra.ph/file/4f68128eb38ac812952e2.jpg"
+
 @Client.on_message(filters.command(['start', f'start@{BOT_USERNAME}'],prefixes=['.','/','!'],case_sensitive=False) & filters.text)
 async def start(Client, message):
     await Client.send_chat_action(message.chat.id, "typing")
@@ -36,4 +38,4 @@ Press below buttons to know More..!
 
 POWERED BY: <a href="t.me/SPA4KY">S P A R K Y</a></b>
 """
-    await Client.send_message(chat_id=message.chat.id,text=caption,disable_web_page_preview=True,reply_to_message_id=message.message_id,reply_markup=REPLY_MARKUP)
+    await Client.send_message(chat_id=message.chat.id,BOT_PIC,text=caption,disable_web_page_preview=True,reply_to_message_id=message.message_id,reply_markup=REPLY_MARKUP)
