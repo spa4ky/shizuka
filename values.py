@@ -43,14 +43,14 @@ import bs4
 import json
 
 
-mongourl = "mongodb+srv://ccbotnew:ccbotnew@cluster0.4w8nx56.mongodb.net/?retryWrites=true&w=majority"
+mongourl = "mongodb+srv://Sarcehkr:Cesar0728.@cluster0.pnzil5l.mongodb.net/?retryWrites=true&w=majority"
 client = pymongo.MongoClient(mongourl,serverSelectionTimeoutMS=5000)
 maindb = client.bot['main']
 
-antidb = redis.Redis(host='redis-15306.c241.us-east-1-4.ec2.cloud.redislabs.com', port=15306, password='BBCjFiJAQ3l4gjBqlZBWMxZfh4xRKl2R')
+antidb = redis.Redis(host='redis-15628.c285.us-west-2-2.ec2.cloud.redislabs.com', port=15628, password='VRHvMoMXtlbjVI7hRhErz0ZgWIzjGQPF')
 
-BOT_USERNAME = 'LKTechNewsBot'
-loggp = -1001456270046
+BOT_USERNAME = 'shizuka_check_bot'
+loggp = -1001752921824
 waste_cards = [1,2,7,8,9,0]
 banned_bins = open('files/bannedbin.txt', 'r').readlines()
 admins = open('files/admins.txt', 'r').readlines()
