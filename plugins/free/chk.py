@@ -257,7 +257,7 @@ async def ch(Client, message):
                                             await msg.edit_text("✖️ PROXY DEAD ✖️")
                                         else:
                                             lasttext = f"""
-❇️ [STRIPE AUTH GATE] ❇️
+<b>❇️ [STRIPE AUTH GATE] ❇️
 
 ✘ CARD: <code>{lista}</code>
 ✘ RESULT: {response}{r_logo} [{r_text}]
@@ -268,7 +268,7 @@ async def ch(Client, message):
 ✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
 ✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-✘ POWERED BY: SPA4KY"""
+✘ POWERED BY: SPA4KY</b>"""
                                         await msg.edit_text(lasttext)
                                         if "✅" in lasttext:
                                             await Client.send_message(-1001752921824, lasttext)
