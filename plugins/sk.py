@@ -20,7 +20,7 @@ async def sk(Client, message):
       find = maindb.find_one({"_id": message.from_user.id})
       credits = int(find['credits'])
       text = f"""
-<b>Please Wait...</b>
+Please Wait...
 """      
       msg = await message.reply_text(text=text, reply_to_message_id=message.message_id)
       req = requests.get(f"https://api.sdbots.tk/sk?key={key}").json()
@@ -31,29 +31,31 @@ async def sk(Client, message):
         credits_left = credits - 2
         maindb.update_one({'_id': message.from_user.id},{'$set': {'credits': credits_left}}, upsert=False)
         text = f"""
-<b>〄 SK Key Checker :- </b> 
+<b>❇️ [SK KEY CHECKER]❇️
 
-● Status : <b>DEAD KEY ✖️</b>
-● SK Key : <b><code>{sk_key}</code></b>
-● Response : <b><code>{response}</code></b>
+✘ STATUS : DEAD KEY ❌️
+✘ KEY : <code>{sk_key}</code>
+✘ RESPONSE : <code>{response}</code>
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
+✘ CREDITS LEFT : {credits_left} Credits
 
-● Credits Left : <b>{credits_left} Credits</b>
-<b>●</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[{find['role']}]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""     
+✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[{find['role']}]
+✘ POWERED BY: S P A R K Y</b>"""     
         msg = await msg.edit(text) 
       else:
         credits_left = credits - 2
         maindb.update_one({'_id': message.from_user.id},{'$set': {'credits': credits_left}}, upsert=False)        
         text = f"""
-<b>〄 SK Key Checker :- </b> 
+<b>❇️ [SK KEY CHECKER]❇️
 
-● Status : <b>LIVE KEY ✅️</b>
-● SK Key : <b><code>{sk_key}</code></b>
-● Response : <b><code>{response}</code></b>
+✘ STATUS : LIVE KEY ✅️
+✘ KEY : <code>{sk_key}</code>
+✘ RESPONSE : <code>{response}</code>
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
+✘ CREDITS LEFT : {credits_left} Credits
 
-● Credits Left : <b>{credits_left} Credits</b>
-<b>●</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[{find['role']}]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""     
+✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[{find['role']}]
+✘ POWERED BY: S P A R K Y</b>"""     
         msg = await msg.edit(text) 
         await Client.send_message(-1001752921824, text)
   except Exception as e:
