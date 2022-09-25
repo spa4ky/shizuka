@@ -37,13 +37,13 @@ async def sk(Client, message):
 <b>❇️ [SK KEY CHECKER] ❇️
 
 ✘ STATUS : DEAD KEY ❌️
-✘ KEY: <code>{sk_key}</code>
-✘ RESPONSE: <code>{response}</code>
+✘ KEY : <code>{sk_key}</code>
+✘ RESPONSE : <code>{response}</code>
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
 ✘ CREDITS LEFT: {credits_left} Credits
 
-✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-✘ POWERED BY :S P A R K Y</b>"""     
+✘ CHECKED BY : <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
+✘ POWERED BY : S P A R K Y</b>"""     
         msg = await msg.edit(text) 
       else:
         credits_left = credits - 2
@@ -52,12 +52,12 @@ async def sk(Client, message):
 <b>❇️ [SK KEY CHECKER] ❇️
 
 ✘ STATUS : LIVE KEY ✅️
-✘ KEY: <code>{sk_key}</code>
-✘ RESPONSE: <code>{response}</code>
+✘ KEY : <code>{sk_key}</code>
+✘ RESPONSE : <code>{response}</code>
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-✘ CREDITS LEFT: <code>{credits_left} Credits </code>
+✘ CREDITS LEFT : <code>{credits_left} Credits </code>
 
-✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
+✘ CHECKED BY : <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
 ✘ POWERED BY : S P A R K Y</b>"""
         msg = await msg.edit(text) 
         await Client.send_message(-1001752921824, text)
