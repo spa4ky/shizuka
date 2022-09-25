@@ -12,9 +12,6 @@ import base64
 
 r = antidb
 
-
-
-
 @Client.on_message(filters.command("vbv", prefixes=[".", "/", "!"], case_sensitive=False) & filters.text)
 async def ci(Client, message):
     try:
@@ -22,25 +19,23 @@ async def ci(Client, message):
         verified_gps = open("files/groups.txt", "r")
         verified_gps = verified_gps.readlines()
         if (str(message.chat.id) + "\n" not in verified_gps and message.chat.type != "private"):
-            await message.reply_text(text="""<b>⚠️Unauthorized Chat⚠️</b>""",reply_to_message_id=message.message_id)
+            await message.reply_text(text="""<b>This Group Is Not Verified. Talk With <code>@MrItzMe</code> And Ask For Verification.</b>""",reply_to_message_id=message.message_id)
         else:
             text = f"""
-<b>❇️ [BRAINTREE VBV LOOKUP] ❇️
-
-✘ RESULT: Checking Your Card...
-✘ PROCESS: □□□□□□□□□□ 0% 
-✘ TIME TAKEN: {get_time_taken(started_time)}'s
-┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-✘ CHECKING BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
-✘ POWERED BY: S P A R K Y</b>"""
+<b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
+<b>ᗚ</b> RESULT: <b>CHECKING YOUR INPUT</b>
+<b>ᗚ</b> PROCESS: <b>□□□□□□□□□□ 0% </b>
+<b>ᗚ</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a></b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
             msg = await message.reply_text(text=text,reply_to_message_id=message.message_id)
             await Client.send_chat_action(message.chat.id, "typing")
             client = pymongo.MongoClient(mongourl, serverSelectionTimeoutMS=5000)
             find = client.bot["main"].find_one({"_id": message.from_user.id})
             if isinstance(find, type(None)) == True:
-                await msg.edit_text(f"""⚠️ Register Yourself To Use Me ⚠️""")
+                await msg.edit_text(f"""<b>Register Yourself To Use Me. Hit /takeme To Register Yourself</b>""")
             elif find['status'] == "F" and message.chat.type == 'private':
-                await msg.edit_text("""⚠️ Take Paid Plan To Use ME Here User ⚠️""")
+                await msg.edit_text("""<b>Take Paid Plan To Use ME Here User hit /buy to see my premium plans</b>""")
             else:
                 #r = redis.Redis(
                 #    host="redis-18001.c82.us-east-1-2.ec2.cloud.redislabs.com",
@@ -52,10 +47,10 @@ async def ci(Client, message):
                 role = find["status"]
                 if role == "P" and spam_time < 10:
                     time_left = 10 - spam_time
-                    await msg.edit_text(f""" AntiSpam try again after {time_left}'s""")
+                    await msg.edit_text(f"""<b> AntiSpam try again after {time_left}'s</b>""")
                 elif role == "F" and spam_time < 60:
                     time_left =  60 - spam_time
-                    await msg.edit_text(f""" AntiSpam try again after {time_left}'s""")
+                    await msg.edit_text(f"""<b> AntiSpam try again after {time_left}'s</b>""")
                 else:
                     if message.reply_to_message is not None:
                         message.text = message.reply_to_message.text
@@ -131,18 +126,14 @@ async def ci(Client, message):
                                 print(step1.text)
                                 if isinstance(token1, type(None)) == True:
                                     text = f"""
-<b>❇️ [BRAINTREE VBV LOOKUP] ❇️
-
-✘ CARD: <code>{lista}</code>
-✘ RESULT: REJECTED[❌] (ERROR)
-┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-✘ BANK INFO: {bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]
-✘ BIN DATA: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
-┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-✘ TIME TAKEN: {get_time_taken(started_time)}'s
-
-✘ CHECKING BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-✘ POWERED BY: S P A R K Y</b>"""
+<b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>REJECTED[❌] (ERROR)</b>
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+<b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     r.set(message.from_user.id, int(time.time()))
                                 else:
@@ -154,19 +145,15 @@ async def ci(Client, message):
                                     main_bearer = re.search(r'"authorizationFingerprint":"(.*)","configUrl', message).group(1)
                                     merchant_id = re.search(r'"merchant_id": "(.*)", "vault', step1.text).group(1)
                                     text = f"""
-<b>❇️ [BRAINTREE VBV LOOKUP] ❇️
-
-✘ CARD: <code>{lista}</code>
-✘ RESULT: ALMOST COMPLETED
-✘ PROCESS: ■■■■■□□□□□ 50%
-┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-✘ BANK INFO: {bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]
-✘ BIN DATA: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
-┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-✘ TIME TAKEN: {get_time_taken(started_time)}'s
-
-✘ CHECKING BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-✘ POWERED BY: S P A R K Y</b>"""
+<b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
+<b>ᗚ</b> INPUT: <code>{lista}</code>
+<b>ᗚ</b> RESULT: <b>ALMOST COMPLETED</b>
+<b>ᗚ</b> PROCESS: ■■■■■□□□□□ 50%
+<b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+<b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+<b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
+<b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+<b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     bearer = f'Bearer {main_bearer}'
                                     headers = {
@@ -211,19 +198,16 @@ async def ci(Client, message):
                                     res = response['paymentMethod']['threeDSecureInfo']
                                     req = res['enrolled']
                                     text = f"""
-    <b>❇️ [BRAINTREE VBV LOOKUP] ❇️
+    <b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
+    <b>ᗚ</b> INPUT: <code>{lista}</code>
+    <b>ᗚ</b> RESULT: <b>ALMOST COMPLETED</b>
+    <b>ᗚ</b> PROCESS: <b>■■■■■■■■■■ 100%</b>
+    <b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+    <b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+    <b>ᗚ</b> TIME TAKING: <b>{get_time_taken(started_time)}'s</b>
     
-    ✘ CARD: <code>{lista}</code>
-    ✘ RESULT: ALMOST COMPLETED
-    ✘ PROCESS: ■■■■■■■■■■ 100%
-    ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-    ✘ BANK INFO: {bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]
-    ✘ BIN DATA: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
-    ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-    ✘ TIME TAKEN: {get_time_taken(started_time)}'s
-    
-    ✘ CHECKING BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-    ✘ POWERED BY: S P A R K Y</b>"""
+    <b>♻️</b> CHECKING BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+    <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                     await msg.edit_text(text)
                                     try:
                                         if req == 'Y':
@@ -245,23 +229,20 @@ async def ci(Client, message):
                                             await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER @MrItzMe")
                                         else:
                                             text = f"""
-    <b>❇️ [BRAINTREE VBV LOOKUP] ❇️
+    <b>〄</b> GATE: <b>BRAINTREE VBV LOOKUP</b>
+    <b>ᗚ</b> INPUT: <code>{lista}</code>
+    <b>ᗚ</b> RESULT: <b>{response}[{r_logo}] ({r_text})</b>
+    <b>ᗚ</b> BANK INFO: <b>{bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]</b>
+    <b>ᗚ</b> BIN DATA: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+    <b>ᗚ</b> TIME TAKING: {get_time_taken(started_time)}'s
     
-    ✘ CARD: <code>{lista}</code>
-    ✘ RESULT: {response}[{r_logo}] ({r_text})
-    ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-    ✘ BANK INFO: {bin_data['data']['bank']}({bin_data['data']['countryInfo']['code']})[{bin_data['data']['countryInfo']['emoji']}]
-    ✘ BIN DATA: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
-    ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
-    ✘ TIME TAKEN: {get_time_taken(started_time)}'s
-    
-    ✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-    ✘ POWERED BY: S P A R K Y</b>"""
+    <b>♻️</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]</b>
+    <b>🧑🏻‍💻| BOT BY: @MrItzMe</b>"""
                                         await msg.edit_text(text)
                                         r.set(message.from_user.id, int(time.time()))
     except ProxyError as e:
-        await msg.edit_text("✖️ PROXY DEAD ✖️")
-        await Client.send_message(chat_id=loggp, text="Proxy Dead In VBV Gate")
+        await msg.edit_text("PROXY DEAD PLEASE REPORT TO OWNER <code>@MrItzMe</code>")
+        await Client.send_message(chat_id=loggp, text="Proxy Dead In Ci Gate")
     except Exception as e:
         await Client.send_message(chat_id=loggp, text=e)
         print(e)
