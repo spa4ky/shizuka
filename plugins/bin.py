@@ -52,7 +52,7 @@ async def bin(Client, message):
 <b>●</b> Dial Code: <b>{jsontext['data']['countryInfo']['dialCode']}</b>
 
 <b>●</b> CHECKED BY: <b><a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>[{find['role']}]</b>
-<b>●</b> POWERED BY: <b><a href="t.me/SPA4KY">S P A R K Y</a></b>"""
+<b>●</b> POWERED BY: <b><a href="tg://openmessage?user_id=1846020026">S P A R K Y</a></b>"""
                             await msg.edit_text(text, disable_web_page_preview=True)
                         else:
                             await msg.edit_text("⚠️ Error While Getting Bin Data ⚠️")

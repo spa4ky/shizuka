@@ -69,13 +69,14 @@ async def gen(Client , message):
                             cards = ''.join(ccs)
                             ccs.clear()
                             text = f"""
-<b>〄 CC Generator :- </b> 
+<b>❇️ [RANDOM CC GENERATOR] ❇️
 
-<b>●</b> Your Data: <b>{cc}|{mes}|{ano}|{cvv}</b>
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+✘ BIN: {cc}|{mes}|{ano}|{cvv}
+✘ BANK INFO: {bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})
+✘ BIN INFO: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
 
-<code>{cards} </code>"""       
+<code>{cards} </code></b>"""       
                             buttons = [[InlineKeyboardButton('🔄 Gen Again 🔄', callback_data='gen')]]   
                             reply_markup = InlineKeyboardMarkup(buttons)
                             await msg.edit_text(text,reply_markup=reply_markup)

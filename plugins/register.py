@@ -46,7 +46,7 @@ async def register(Client,message):
             text = """<b>Registration Successful as a Free User..!✅️</b>"""
             await msg.edit_text(text,disable_web_page_preview=True)
         else:
-            text = """<b>Registration Successful as a Free User..!✅️</b>"""
+            text = """<b>You are already Registered..!⚠️</b>"""
             await msg.edit_text(text,disable_web_page_preview=True)
     except Exception as e:
         print(e)

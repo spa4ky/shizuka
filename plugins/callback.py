@@ -40,25 +40,31 @@ async def myacc(Client, message , update):
   else:
     antispam_time = int(antidb.get(message.reply_to_message.from_user.id).decode("utf-8"))
     text = f"""
-<b>〄</b> User Information:-
-<b>○</b> First Name: <b>{message.reply_to_message.from_user.first_name}</b>
-<b>○</b> User Name: <b>{message.reply_to_message.from_user.username}</b>
-<b>○</b> User Id: <b><code>{message.reply_to_message.from_user.id}</code></b>
-<b>○</b> Limited: <b>{message.reply_to_message.from_user.is_restricted}</b>
-<b>○</b> Profile Link: <b><a href="tg://user?id={message.reply_to_message.from_user.id}">Click Here</a></b>
-<b>○</b> Profile Image: <b><a href="{find['image']}">Click Here</a></b>
-<b>〄</b> User Database Information:-
-<b>○</b> Role: <b>{find['role']}</b>
-<b>○</b> Plan: <b>{find['plan']}</b>
-<b>○</b> Status: <b>{find['status']}</b>
-<b>○</b> Credits: <b>{find['credits']}</b>
-<b>○</b> Live Cards: <b>COMING SOON</b>
-<b>○</b> AntiSpam Time: <b>{datetime.utcfromtimestamp(antispam_time).strftime('%H:%M:%S %d-%m-%Y')}</b>
-<b>〄</b> Chat Information:-
-<b>○</b> Chat Name: <b>{message.reply_to_message.chat.title}</b>
-<b>○</b> User Name: <b>{message.reply_to_message.chat.username}</b>
-<b>○</b> Chat Id: <b><code>{message.reply_to_message.chat.id}</code></b>
-<b>○</b> Chat Type: <b>{message.reply_to_message.chat.type.capitalize()}</b>
+<b>〄 User Information :- </b> 
+
+<b>●</b> First Name: <b>{message.from_user.first_name}</b>
+<b>●</b> User Name: <b>{message.from_user.username}</b>
+<b>●</b> User Id: <b><code>{message.from_user.id}</code></b>
+<b>●</b> Limited: <b>{message.from_user.is_restricted}</b>
+<b>●</b> Profile Link: <b><a href="tg://user?id={message.from_user.id}">Click Here</a></b>
+<b>●</b> Profile Image: <b><a href="{find['image']}">Click Here</a></b>
+
+
+<b>〄 User Database Information :- </b> 
+
+<b>●</b> Role: <b>{find['role']}</b>
+<b>●</b> Plan: <b>{find['plan']}</b>
+<b>●</b> Status: <b>{find['status']}</b>
+<b>●</b> Credits: <b>{find['credits']}</b>
+<b>●</b> AntiSpam Time: <b>{antispam_time}</b>
+
+
+<b>〄 Chat Information :- </b> 
+
+<b>●</b> Chat Name: <b>{message.chat.title}</b>
+<b>●</b> User Name: <b>{message.chat.username}</b>
+<b>●</b> Chat Id: <b><code>{message.chat.id}</code></b>
+<b>●</b> Chat Type: <b>{message.chat.type.capitalize()}</b>
       """
     await Client.edit_message_text(
         chat_id=message.chat.id,
@@ -128,7 +134,9 @@ async def paid(Client, message,update):
   ]
   ]
   reply_markup = InlineKeyboardMarkup(buttons)
-  text="""Check Down My Paid Commands"""
+  text="""Seems like You are interested in my Paid Commands?
+
+Press Below buttons to know my Paid Commands</b>"""
   await Client.edit_message_text(
       chat_id=message.chat.id,
       text=text,
@@ -362,13 +370,14 @@ async def gen(Client, message , update):
             cards = ''.join(ccs)
             ccs.clear()
             text = f""""
-<b>〄 CC Generator :- </b> 
+<b>❇️ [RANDOM CC GENERATOR] ❇️
 
-<b>●</b> Your Data: <b>{cc}|{mes}|{ano}|{cvv}</b>
-<b>●</b> Bank Info: <b>{bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})</b>
-<b>●</b> Bin Info: <code>{bin}</code> - <b>{bin_data['data']['level']}</b> - <b>{bin_data['data']['type']}</b>
+✘ BIN: {cc}|{mes}|{ano}|{cvv}
+✘ BANK INFO: {bin_data['data']['bank']} - {bin_data['data']['countryInfo']['code']}({bin_data['data']['countryInfo']['emoji']})
+✘ BIN INFO: <code>{bin}</code> - {bin_data['data']['level']} - {bin_data['data']['type']}
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
 
-<code>{cards} </code>"""
+<code>{cards} </code></b>"""       
             buttons = [[InlineKeyboardButton('🔄 Gen Again 🔄', callback_data='gen')]]   
             reply_markup = InlineKeyboardMarkup(buttons)
             await Client.edit_message_text(

@@ -42,7 +42,7 @@ async def info(Client, message):
                     antispam_time = "Hee"
                     text = f"""
 <b>〄 User Information :- </b> 
-
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
 <b>●</b> First Name: <b>{message.from_user.first_name}</b>
 <b>●</b> User Name: <b>{message.from_user.username}</b>
 <b>●</b> User Id: <b><code>{message.from_user.id}</code></b>
@@ -52,7 +52,7 @@ async def info(Client, message):
 
 
 <b>〄 User Database Information :- </b> 
-
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
 <b>●</b> Role: <b>{find['role']}</b>
 <b>●</b> Plan: <b>{find['plan']}</b>
 <b>●</b> Status: <b>{find['status']}</b>
@@ -61,7 +61,7 @@ async def info(Client, message):
 
 
 <b>〄 Chat Information :- </b> 
-
+┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ ┅ 
 <b>●</b> Chat Name: <b>{message.chat.title}</b>
 <b>●</b> User Name: <b>{message.chat.username}</b>
 <b>●</b> Chat Id: <b><code>{message.chat.id}</code></b>
