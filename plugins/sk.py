@@ -27,7 +27,7 @@ Please Wait...
       response = req['response']
       sk_key = req['sk_key']
       status = req['status']
-      if status == "Dead":
+      if status == "Dead ✕":
         credits_left = credits - 2
         maindb.update_one({'_id': message.from_user.id},{'$set': {'credits': credits_left}}, upsert=False)
         text = f"""
